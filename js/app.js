@@ -144,7 +144,7 @@ $(() => {
     metronomeTest.play();
   }
 
-  let millisecs = 0;
+  let millisecs = 2856;
   const triplet = 238;
   const quaver = 357;
   const crotchet = 714;
@@ -152,7 +152,7 @@ $(() => {
   const minim = 1428;
   const minimPlusQuaver = 1785;
   const dotMinim = 2142;
-  const semibreve = 2856
+  const semibreve = 2856;
   const fiveBeats = 3570;
 
 
@@ -163,7 +163,7 @@ $(() => {
     intervalId = setTimeout(() => {
       $box.html('y');
       audioFs.play();
-    });
+    }, millisecs);
     intervalId = setTimeout(() => {
       $box.html('a');
       audioFs.pause();
