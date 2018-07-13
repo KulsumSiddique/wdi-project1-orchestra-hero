@@ -272,6 +272,7 @@ $(() => {
       audioD.currentTime = 0;
       audioCs.play();
     }, millisecs += quaver);
+
     // First subject recap
     intervalId = setTimeout(() => {
       $box.html('y');
@@ -502,6 +503,7 @@ $(() => {
       audioCs.currentTime = 0;
       audioB.play();
     }, millisecs += quaver);
+
     // Second theme recap
     intervalId = setTimeout(() => {
       $box.html('e');
@@ -647,6 +649,7 @@ $(() => {
       audioHighCs.currentTime = 0;
       audioFs.play();
     }, millisecs += dotCrotchet);
+
     // Tutti first subject
     intervalId = setTimeout(() => {
       $box.html('k');
@@ -687,6 +690,7 @@ $(() => {
       audioD.currentTime = 0;
       audioE.play();
     }, millisecs += minim);
+
     // Tutti first subject recap
     intervalId = setTimeout(() => {
       $box.html('y');
@@ -721,6 +725,7 @@ $(() => {
       audioD.currentTime = 0;
       audioE.play();
     }, millisecs += crotchet);
+
     //Triplets bar 1
     intervalId = setTimeout(() => {
       $box.html('d');
@@ -1608,6 +1613,258 @@ $(() => {
       audioG.currentTime = 0;
       audioG.play();
     }, millisecs += triplet); // 12
+
+    // Semibreves
+    intervalId = setTimeout(() => {
+      $box.html('h');
+      audioG.pause();
+      audioG.currentTime = 0;
+      audioG.play();
+    }, millisecs += triplet); // 1
+    intervalId = setTimeout(() => {
+      $box.html('f');
+      audioG.pause();
+      audioG.currentTime = 0;
+      audioE.play();
+    }, millisecs += semibreve); // 2
+    intervalId = setTimeout(() => {
+      $box.html('h');
+      audioE.pause();
+      audioE.currentTime = 0;
+      audioG.play();
+    }, millisecs += semibreve); // 3
+    intervalId = setTimeout(() => {
+      $box.html('f');
+      audioG.pause();
+      audioG.currentTime = 0;
+      audioE.play();
+    }, millisecs += semibreve); // 4
+    intervalId = setTimeout(() => {
+      $box.html('h');
+      audioE.pause();
+      audioE.currentTime = 0;
+      audioG.play();
+    }, millisecs += semibreve); // 5
+    intervalId = setTimeout(() => {
+      $box.html('h');
+      audioG.pause();
+      audioG.currentTime = 0;
+      audioG.play();
+    }, millisecs += semibreve); // 6
+    intervalId = setTimeout(() => {
+      $box.html('u');
+      audioG.pause();
+      audioG.currentTime = 0;
+      audioGs.play();
+    }, millisecs += semibreve); // 7
+    intervalId = setTimeout(() => {
+      $box.html('u');
+      audioGs.pause();
+      audioGs.currentTime = 0;
+      audioGs.play();
+    }, millisecs += semibreve); // 8
+
+    // Stringendo
+    intervalId = setTimeout(() => {
+      $box.html('u');
+      audioGs.pause();
+      audioGs.currentTime = 0;
+      audioGs.play();
+    }, millisecs += semibreve); // 1
+    intervalId = setTimeout(() => {
+      $box.html('u');
+      audioGs.pause();
+      audioGs.currentTime = 0;
+      audioGs.play();
+    }, millisecs += minim); // 2
+    intervalId = setTimeout(() => {
+      $box.html('u');
+      audioGs.pause();
+      audioGs.currentTime = 0;
+      audioGs.play();
+    }, millisecs += minim); // 3
+    intervalId = setTimeout(() => {
+      $box.html('u');
+      audioGs.pause();
+      audioGs.currentTime = 0;
+      audioGs.play();
+    }, millisecs += minim); // 4
+
+    // Bars of rest
+    intervalId = setTimeout(() => {
+      $box.html('');
+      audioGs.pause();
+      audioGs.currentTime = 0;
+    }, millisecs += minim); // 1
+    intervalId = setTimeout(() => {
+      $box.html('');
+    }, millisecs += semibreve); // 2
+    intervalId = setTimeout(() => {
+      $box.html('');
+    }, millisecs += semibreve); // 3
+    intervalId = setTimeout(() => {
+      audioGs.currentTime = 0;
+    }, millisecs += semibreve); // 4
+
+    /// fff
+    intervalId = setTimeout(() => {
+      $box.html(';');
+      audioHighD.play();
+    }, millisecs += semibreve);
+    intervalId = setTimeout(() => {
+      $box.html('');
+      audioHighD.pause();
+      audioHighD.currentTime = 0;
+    }, millisecs += fiveBeats);
+    intervalId = setTimeout(() => {
+      $box.html('');
+    }, millisecs += dotMinim);
+    intervalId = setTimeout(() => {
+      $box.html('d');
+      audioD.play();
+    }, millisecs += minim); // 1
+    intervalId = setTimeout(() => {
+      $box.html('');
+      audioD.pause();
+      audioD.currentTime = 0;
+    }, millisecs += minim);
+    intervalId = setTimeout(() => {
+      $box.html('d');
+      audioD.play();
+    }, millisecs += minim); // 2
+    intervalId = setTimeout(() => {
+      $box.html('');
+      audioD.pause();
+      audioD.currentTime = 0;
+    }, millisecs += minim);
+    intervalId = setTimeout(() => {
+      $box.html('d');
+      audioD.play();
+    }, millisecs += crotchet); // 3
+    intervalId = setTimeout(() => {
+      $box.html('');
+      audioD.pause();
+      audioD.currentTime = 0;
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $box.html('d');
+      audioD.play();
+    }, millisecs += crotchet); // 4
+    intervalId = setTimeout(() => {
+      $box.html('');
+      audioD.pause();
+      audioD.currentTime = 0;
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $box.html('d');
+      audioD.play();
+    }, millisecs += crotchet); // 5
+    intervalId = setTimeout(() => {
+      $box.html('');
+      audioD.pause();
+      audioD.currentTime = 0;
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $box.html('d');
+      audioD.play();
+    }, millisecs += crotchet); // 6
+    intervalId = setTimeout(() => {
+      $box.html('');
+      audioD.pause();
+      audioD.currentTime = 0;
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $box.html('d');
+      audioD.play();
+    }, millisecs += crotchet); // 7
+    intervalId = setTimeout(() => {
+      $box.html('');
+      audioD.pause();
+      audioD.currentTime = 0;
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $box.html('d');
+      audioD.play();
+    }, millisecs += crotchet); // 8
+    intervalId = setTimeout(() => {
+      $box.html('');
+      audioD.pause();
+      audioD.currentTime = 0;
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $box.html('d');
+      audioD.play();
+    }, millisecs += crotchet); // 9
+    intervalId = setTimeout(() => {
+      $box.html('');
+      audioD.pause();
+      audioD.currentTime = 0;
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $box.html('d');
+      audioD.play();
+    }, millisecs += crotchet); // 10
+
+    // Closing melody
+    intervalId = setTimeout(() => {
+      $box.html('y');
+      audioD.pause();
+      audioD.currentTime = 0;
+      audioFs.play();
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $box.html('a');
+      audioFs.pause();
+      audioFs.currentTime = 0;
+      audioB.play();
+    }, millisecs += minim);
+    intervalId = setTimeout(() => {
+      $box.html('e');
+      audioB.pause();
+      audioB.currentTime = 0;
+      audioCs.play();
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $box.html('d');
+      audioCs.pause();
+      audioCs.currentTime = 0;
+      audioD.play();
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $box.html('f');
+      audioD.pause();
+      audioD.currentTime = 0;
+      audioE.play();
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $box.html('y');
+      audioE.pause();
+      audioE.currentTime = 0;
+      audioFs.play();
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $box.html('d');
+      audioFs.pause();
+      audioFs.currentTime = 0;
+      audioD.play();
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+      $box.html('y');
+      audioD.pause();
+      audioD.currentTime = 0;
+      audioFs.play();
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $box.html('d');
+      audioFs.pause();
+      audioFs.currentTime = 0;
+      audioD.play();
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+      $box.html('');
+      audioD.pause();
+      audioD.currentTime = 0;
+    }, millisecs += quaver);
 
 
 
