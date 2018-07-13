@@ -1,68 +1,55 @@
 $(() => {
+  const $startBtn = $('.start');
+  const $box = $('div');
+  let intervalId;
+
   const audioLowG = new Audio();
-  audioLowG.src = 'Glow.wav';
+  audioLowG.src = 'sounds/Glow.wav';
 
   const audioB = new Audio();
-  audioB.src = 'Bwav.wav';
+  audioB.src = 'sounds/Bwav.wav';
 
   const audioCs = new Audio();
-  audioCs.src = 'Cswav.wav';
+  audioCs.src = 'sounds/Cswav.wav';
 
   const audioD = new Audio();
-  audioD.src = 'Dwav.wav';
+  audioD.src = 'sounds/Dwav.wav';
 
   const audioE = new Audio();
-  audioE.src = 'Ewav.wav';
+  audioE.src = 'sounds/Ewav.wav';
 
   const audioFn = new Audio();
-  audioFn.src = 'Fnwav.wav';
+  audioFn.src = 'sounds/Fnwav.wav';
 
   const audioFs = new Audio();
-  audioFs.src = 'Fswav.wav';
+  audioFs.src = 'sounds/Fswav.wav';
 
   const audioG = new Audio();
-  audioG.src = 'Gwav.wav';
+  audioG.src = 'sounds/Gwav.wav';
 
   const audioGs = new Audio();
-  audioGs.src = 'Gshighwav.wav';
+  audioGs.src = 'sounds/Gshighwav.wav';
 
   const audioA = new Audio();
-  audioA.src = 'Awav.wav';
+  audioA.src = 'sounds/Awav.wav';
 
   const audioAs = new Audio();
-  audioAs.src = 'Ashighwav.wav';
+  audioAs.src = 'sounds/Ashighwav.wav';
 
   const audioHighB = new Audio();
-  audioHighB.src = 'Bhighwav.wav';
+  audioHighB.src = 'sounds/Bhighwav.wav';
 
   const audioHighCn = new Audio();
-  audioHighCn.src = 'Cnhighwav.wav';
+  audioHighCn.src = 'sounds/Cnhighwav.wav';
 
   const audioHighCs = new Audio();
-  audioHighCs.src = 'Cshighwav.wav';
+  audioHighCs.src = 'sounds/Cshighwav.wav';
 
   const audioHighD = new Audio();
-  audioHighD.src = 'Dhighwav.wav';
+  audioHighD.src = 'sounds/Dhighwav.wav';
 
-
-
-  // $(document).on('keydown', function(e) {
-  //   if (e.which === 77) {
-  //     audioFs.pause();
-  //   } else if (e.which === 76) {
-  //     audioB.play();
-  //   } else if (e.which === 84) {
-  //     audioCs.play();
-  //   } else if (e.which === 68) {
-  //     audioD.play();
-  //   } else if (e.which === 82) {
-  //     audioE.play();
-  //   } else if (e.which === 70) {
-  //     audioG.play();
-  //   } else {
-  //     console.log('null');
-  //   }
-  // });
+  const metronome = new Audio();
+  metronome.src = 'sounds/metronome.mp3';
 
   $(document).on('keydown', function(e) {
     if (e.which === 90) {
@@ -98,8 +85,8 @@ $(() => {
     } else {
       console.log('null');
     }
-  });
 
+  });
   $(document).on('keyup', function(e) {
     if (e.which === 90) {
       audioLowG.pause();
@@ -151,29 +138,110 @@ $(() => {
     }
   });
 
-  $(document).on('keyup', function(e) {
-    if (e.which === 77) {
+  function toggleMetronome() {
+    intervalId = setInterval(() => {
+      metronome.play();
+    }, 357, true);
+  }
+
+  $startBtn.on('click', function() {
+    toggleMetronome();
+    intervalId = setTimeout(() => {
+      $box.html('m');
+      audioFs.play();
+    });
+    intervalId = setTimeout(() => {
+      $box.html('l');
       audioFs.pause();
       audioFs.currentTime = 0;
-    } else if (e.which === 76) {
+      audioB.play();
+    }, 1428);
+    intervalId = setTimeout(() => {
+      $box.html('t');
       audioB.pause();
       audioB.currentTime = 0;
-    } else if (e.which === 84) {
+      audioCs.play();
+    }, 1785);
+    intervalId = setTimeout(() => {
+      $box.html('d');
       audioCs.pause();
       audioCs.currentTime = 0;
-    } else if (e.which === 68) {
+      audioD.play();
+    }, 2142);
+    intervalId = setTimeout(() => {
+      $box.html('r');
       audioD.pause();
       audioD.currentTime = 0;
-    } else if (e.which === 82) {
+      audioE.play();
+    }, 2499);
+    intervalId = setTimeout(() => {
+      $box.html('m');
       audioE.pause();
       audioE.currentTime = 0;
-    } else if (e.which === 70) {
-      audioG.pause();
-      audioG.currentTime = 0;
-    } else {
-      console.log('null');
-    }
+      audioFs.play();
+    }, 2856);
+    intervalId = setTimeout(() => {
+      $box.html('d');
+      audioFs.pause();
+      audioFs.currentTime = 0;
+      audioD.play();
+    }, 3927);
+    intervalId = setTimeout(() => {
+      $box.html('m');
+      audioD.pause();
+      audioD.currentTime = 0;
+      audioFs.play();
+    }, 4284);
+    intervalId = setTimeout(() => {
+      $box.html('d');
+      audioFs.pause();
+      audioFs.currentTime = 0;
+      audioD.play();
+    }, 5355);
+    intervalId = setTimeout(() => {
+      $box.html('m');
+      audioD.pause();
+      audioD.currentTime = 0;
+      audioFs.play();
+    }, 5712);
+    intervalId = setTimeout(() => {
+      $box.html('l');
+      audioFs.pause();
+      audioFs.currentTime = 0;
+      audioB.play();
+    }, 6783);
+    intervalId = setTimeout(() => {
+      $box.html('d');
+      audioB.pause();
+      audioB.currentTime = 0;
+      audioD.play();
+    }, 7140);
+    intervalId = setTimeout(() => {
+      $box.html('l');
+      audioD.pause();
+      audioD.currentTime = 0;
+      audioB.play();
+    }, 7497);
+    intervalId = setTimeout(() => {
+      $box.html('f');
+      audioB.pause();
+      audioB.currentTime = 0;
+      audioLowG.play();
+    }, 7854);
+    intervalId = setTimeout(() => {
+      $box.html('d');
+      audioLowG.pause();
+      audioLowG.currentTime = 0;
+      audioD.play();
+    }, 8211);
+    intervalId = setTimeout(() => {
+      $box.html('l');
+      audioD.pause();
+      audioD.currentTime = 0;
+      audioB.play();
+    }, 8568);
   });
+
 
 
 });
