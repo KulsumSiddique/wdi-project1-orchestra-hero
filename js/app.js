@@ -139,9 +139,9 @@ $(() => {
   });
 
   function toggleMetronome() {
-    intervalId = setInterval(() => {
-      metronome.play();
-    }, 357, true);
+    const metronomeTest = new Audio();
+    metronomeTest.src = 'sounds/metronomeTest.wav';
+    metronomeTest.play();
   }
 
   $startBtn.on('click', function() {
