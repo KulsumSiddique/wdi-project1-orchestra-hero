@@ -140,9 +140,21 @@ $(() => {
 
   function toggleMetronome() {
     const metronomeTest = new Audio();
-    metronomeTest.src = 'sounds/metronomeTest.wav';
+    metronomeTest.src = 'sounds/metronometest.wav';
     metronomeTest.play();
   }
+
+  let millisecs = 0;
+  const triplet = 238;
+  const quaver = 357;
+  const crotchet = 714;
+  const dotCrotchet = 1071;
+  const minim = 1428;
+  const dotMinim = 2142;
+  const semibreve = 2856
+  const fiveBeats = 3570;
+
+
 
   $startBtn.on('click', function() {
     toggleMetronome();
@@ -155,91 +167,91 @@ $(() => {
       audioFs.pause();
       audioFs.currentTime = 0;
       audioB.play();
-    }, 1428);
+    }, millisecs += minim);
     intervalId = setTimeout(() => {
       $box.html('t');
       audioB.pause();
       audioB.currentTime = 0;
       audioCs.play();
-    }, 1785);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $box.html('d');
       audioCs.pause();
       audioCs.currentTime = 0;
       audioD.play();
-    }, 2142);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $box.html('r');
       audioD.pause();
       audioD.currentTime = 0;
       audioE.play();
-    }, 2499);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $box.html('m');
       audioE.pause();
       audioE.currentTime = 0;
       audioFs.play();
-    }, 2856);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $box.html('d');
       audioFs.pause();
       audioFs.currentTime = 0;
       audioD.play();
-    }, 3927);
+    }, millisecs += dotCrotchet);
     intervalId = setTimeout(() => {
       $box.html('m');
       audioD.pause();
       audioD.currentTime = 0;
       audioFs.play();
-    }, 4284);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $box.html('d');
       audioFs.pause();
       audioFs.currentTime = 0;
       audioD.play();
-    }, 5355);
+    }, millisecs += dotCrotchet);
     intervalId = setTimeout(() => {
       $box.html('m');
       audioD.pause();
       audioD.currentTime = 0;
       audioFs.play();
-    }, 5712);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $box.html('l');
       audioFs.pause();
       audioFs.currentTime = 0;
       audioB.play();
-    }, 6783);
+    }, millisecs += dotCrotchet);
     intervalId = setTimeout(() => {
       $box.html('d');
       audioB.pause();
       audioB.currentTime = 0;
       audioD.play();
-    }, 7140);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $box.html('l');
       audioD.pause();
       audioD.currentTime = 0;
       audioB.play();
-    }, 7497);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $box.html('f');
       audioB.pause();
       audioB.currentTime = 0;
       audioLowG.play();
-    }, 7854);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $box.html('d');
       audioLowG.pause();
       audioLowG.currentTime = 0;
       audioD.play();
-    }, 8211);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $box.html('l');
       audioD.pause();
       audioD.currentTime = 0;
       audioB.play();
-    }, 8568);
+    }, millisecs += quaver);
   });
 
 
