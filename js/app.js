@@ -161,29 +161,34 @@ $(() => {
     toggleMetronome();
     // First subject
     intervalId = setTimeout(() => {
-      $box.html('y');
+      $('body').append($('<div class="animate minim y">y</div>'));
+      // $box.html('y');
       audioFs.play();
     }, millisecs);
     intervalId = setTimeout(() => {
-      $box.html('a');
+      $('body').append($('<div class="animate quaver a">a</div>'));
+      // $box.html('a');
       audioFs.pause();
       audioFs.currentTime = 0;
       audioB.play();
     }, millisecs += minim);
     intervalId = setTimeout(() => {
-      $box.html('e');
+      $('body').append($('<div class="animate quaver e">e</div>'));
+      // $box.html('e');
       audioB.pause();
       audioB.currentTime = 0;
       audioCs.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $box.html('d');
+      $('body').append($('<div class="animate quaver d">d</div>'));
+      // $box.html('d');
       audioCs.pause();
       audioCs.currentTime = 0;
       audioD.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $box.html('f');
+      $('body').append($('<div class="animate quaver f">f</div>'));
+      // $box.html('f');
       audioD.pause();
       audioD.currentTime = 0;
       audioE.play();
