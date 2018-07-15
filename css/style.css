@@ -1,22 +1,108 @@
 main {
   width: 500px;
   height: 500px;
-  display: flex;
+  /* display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: flex-start; */
 }
 
-div {
+.animate {
+  background-color: #ffffff;
   border: 5px solid black;
-  padding: 5px;
-  width: 20px;
+  padding: 2px;
+  margin: 50px;
+  /* height: 20px; */
+  /* width: 20px; */
+  position: absolute;
+  top: 400px;
+  animation: notes 11.424s 1;
 }
 
-.minim {
-  color: red;
+@keyframes notes {
+  0% {
+    right: 0;
+  }
+  45% {
+    padding: 2px;
+    background-color: #ffffff;
+  }
+  50% {
+    padding: 10px;
+    background-color: #aa1145;
+  }
+  55% {
+    padding: 2px;
+    background-color: #ffffff;
+  }
+  76% {
+    /* padding: 10px; */
+  }
+  99% {
+    right: 980px;
+    /* padding: 10px; */
+  }
+  100% {
+    display: none;
+  }
 }
 
-.quaver {
-  color: blue;
+.z {
+  top: 420px;
+}
+
+.a {
+  top: 360px;
+}
+
+.e {
+  top: 320px;
+}
+
+.d {
+  top: 300px;
+}
+
+.f {
+  top: 260px;
+}
+
+.g {
+  top: 240px;
+}
+
+.y {
+  top: 220px;
+}
+
+.h {
+  top: 200px;
+}
+
+.u {
+  top: 180px;
+}
+
+.j {
+  top: 160px;
+}
+
+.i {
+  top: 140px;
+}
+
+.k {
+  top: 120px;
+}
+
+.l {
+  top: 80px;
+}
+
+.p {
+  top: 60px;
+}
+
+.sc {
+  top: 40px;
 }

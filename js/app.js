@@ -145,7 +145,7 @@ $(() => {
     metronomeTest.play();
   }
 
-  let millisecs = 2856;
+  let millisecs = 0;
   const triplet = 238;
   const quaver = 357;
   const crotchet = 714;
@@ -319,7 +319,7 @@ $(() => {
       audioD.play();
     }, millisecs += dotCrotchet);
     intervalId = setTimeout(() => {
-      $main.append($('<div class="animate dotcrotchet">y</div>'));
+      $main.append($('<div class="animate dotcrotchet y">y</div>'));
       audioD.pause();
       audioD.currentTime = 0;
       audioFs.play();
@@ -331,7 +331,7 @@ $(() => {
       audioD.play();
     }, millisecs += dotCrotchet);
     intervalId = setTimeout(() => {
-      $main.append($('<div class="animate dotcrotchet">y</div>'));
+      $main.append($('<div class="animate dotcrotchet y">y</div>'));
       audioD.pause();
       audioD.currentTime = 0;
       audioFs.play();
@@ -495,7 +495,7 @@ $(() => {
       audioD.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $main.append($('<div class="animate quaver s">s</div>'));
+      $main.append($('<div class="animate quaver e">e</div>'));
       audioD.pause();
       audioD.currentTime = 0;
       audioCs.play();
