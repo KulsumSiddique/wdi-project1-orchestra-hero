@@ -16,14 +16,14 @@ main {
   /* width: 20px; */
   position: absolute;
   top: 400px;
-  animation: notes 11.424s 1;
+  animation: notes 11.424s linear forwards;
 }
 
 @keyframes notes {
   0% {
     right: 0;
   }
-  45% {
+  48% {
     padding: 2px;
     background-color: #ffffff;
   }
@@ -31,18 +31,21 @@ main {
     padding: 10px;
     background-color: #aa1145;
   }
-  55% {
+  52% {
     padding: 2px;
     background-color: #ffffff;
+    opacity: 1;
   }
-  76% {
+  /* 76% {
     /* padding: 10px; */
-  }
+  /* } */
   99% {
+    opacity: 0;
     right: 980px;
     /* padding: 10px; */
   }
   100% {
+    opacity: 0;
     display: none;
   }
 }
