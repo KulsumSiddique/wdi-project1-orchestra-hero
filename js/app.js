@@ -129,6 +129,14 @@ $(() => {
 
 
 
+  // const getNoteDimenions = function(noteDiv) {
+  //   console.log(noteDiv);
+  //
+  //
+  //   getNoteDimensions(noteDiv);
+
+
+
   $(document).on('keydown', function(e) {
     const note = getNoteByKeyCode(e.which);
     // console.log(note);
@@ -137,6 +145,7 @@ $(() => {
       $collisionLines.append('<div class="keypress"></div>');
       $('.keypress').css({position: 'absolute', top: note.yPosition});
     }
+
     // Get dimensions of target area
     const barTop = $bar.offset().top;
     console.log(barTop);
@@ -147,9 +156,17 @@ $(() => {
     const barBottom = Number($bar.offset().top) + Number($bar.height());
     console.log(barBottom);
 
+    const noteDiv = $('.animate');
+    console.log(noteDiv);
+    const noteTop = noteDiv.offset().top;
+    console.log(noteTop);
+    const noteLeft = noteDiv.offset().left;
+    console.log(noteLeft);
+    const noteRight = Number(noteDiv.offset().left) + Number(noteDiv.width());
+    console.log(noteRight);
+    const noteBottom = Number(noteDiv.offset().top) + Number(noteDiv.height());
+    console.log(noteBottom);
   });
-
-
 
   $(document).on('keyup', function(e) {
     const note = getNoteByKeyCode(e.which);
@@ -160,16 +177,6 @@ $(() => {
     }
   });
 
-  function getNoteDimenions(noteDiv) {
-    const noteTop = noteDiv.offset().top;
-    console.log(noteTop);
-    const noteLeft = noteDiv.offset().left;
-    console.log(noteLeft);
-    const noteRight = Number(noteDiv.offset().left) + Number(noteDiv.width());
-    console.log(noteRight);
-    const noteBottom = Number(noteDiv.offset().top) + Number(noteDiv.height());
-    console.log(noteBottom);
-  }
 
   function toggleMetronome() {
     const metronomeTest = new Audio();
@@ -189,48 +196,51 @@ $(() => {
   const fiveBeats = 3570;
 
 
-  $startBtn.on('click', function() {
+  $startBtn.on('click', function(noteDiv) {
     toggleMetronome();
     // First subject
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate minim y">y</div>'));
-      const noteDiv = $('.animate');
-      console.log(noteDiv);
+      // const noteDiv = $('.animate');
+      // console.log(noteDiv);
       // audioFs.play();
-      getNoteDimenions(noteDiv);
+      // getNoteDimenions(noteDiv);
     }, millisecs);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver a">a</div>'));
       // audioFs.pause();
       // audioFs.currentTime = 0;
       // audioB.play();
-      const noteDiv = $('.animate');
-      console.log(noteDiv);
-      getNoteDimenions(noteDiv);
+      // const noteDiv = $('.animate');
+      // console.log(noteDiv);
+      // getNoteDimenions(noteDiv);
     }, millisecs += minim);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver e">e</div>'));
       // audioB.pause();
       // audioB.currentTime = 0;
       // audioCs.play();
-      const noteDiv = $('.animate');
-      console.log(noteDiv);
-      getNoteDimenions(noteDiv);
+      // const noteDiv = $('.animate');
+      // console.log(noteDiv);
+      // getNoteDimenions(noteDiv);
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver d">d</div>'));
       // audioCs.pause();
       // audioCs.currentTime = 0;
       // audioD.play();
-      const noteDiv = $('.animate');
-      console.log(noteDiv);
-      getNoteDimenions;
+      // const noteDiv = $('.animate');
+      // console.log(noteDiv);
+      // getNoteDimenions(noteDiv);
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver f">f</div>'));
       // audioD.pause();
       // audioD.currentTime = 0;
       // audioE.play();
+      // const noteDiv = $('.animate');
+      // console.log(noteDiv);
+      // getNoteDimenions(noteDiv);
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate dotcrotchet y">y</div>'));
