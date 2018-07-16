@@ -4,7 +4,12 @@ $(() => {
   const $bar = $('.bar');
   const $main = $('.notes');
   const $animate = $('.animate');
+  const $score = $('.score');
   let intervalId;
+
+  let playerScore = 0;
+  $score.html(`Score: ${playerScore}`);
+
 
   const notes = [];
   const lowG = {
@@ -144,28 +149,43 @@ $(() => {
       note.audio.play();
       $collisionLines.append('<div class="keypress"></div>');
       $('.keypress').css({position: 'absolute', top: note.yPosition});
+
+      // Get dimensions of target area
+      const barTop = $bar.offset().top;
+      console.log(barTop);
+      const barLeft = $bar.offset().left;
+      console.log(barLeft);
+      const barRight = Number($bar.offset().left) + Number($bar.width());
+      console.log(barRight);
+      const barBottom = Number($bar.offset().top) + Number($bar.height());
+      console.log(barBottom);
+
+      // Get note dimensions
+      const noteDiv = $('.animate');
+      console.log(noteDiv);
+      const noteTop = noteDiv.offset().top;
+      console.log(noteTop);
+      const noteLeft = noteDiv.offset().left;
+      console.log(noteLeft);
+      const noteRight = Number(noteDiv.offset().left) + Number(noteDiv.width());
+      console.log(noteRight);
+      const noteBottom = Number(noteDiv.offset().top) + Number(noteDiv.height());
+      console.log(noteBottom);
+
+      if (barRight > noteLeft && barLeft < noteRight && barTop < noteBottom && barBottom > noteTop) {
+        noteDiv.addClass('hit');
+        playerScore += 1;
+        $score.html(`Score: ${playerScore}`);
+      } else {
+        noteDiv.addClass('miss');
+        playerScore -= 1;
+        $score.html(`Score: ${playerScore}`);
+      }
     }
 
-    // Get dimensions of target area
-    const barTop = $bar.offset().top;
-    console.log(barTop);
-    const barLeft = $bar.offset().left;
-    console.log(barLeft);
-    const barRight = Number($bar.offset().left) + Number($bar.width());
-    console.log(barRight);
-    const barBottom = Number($bar.offset().top) + Number($bar.height());
-    console.log(barBottom);
 
-    const noteDiv = $('.animate');
-    console.log(noteDiv);
-    const noteTop = noteDiv.offset().top;
-    console.log(noteTop);
-    const noteLeft = noteDiv.offset().left;
-    console.log(noteLeft);
-    const noteRight = Number(noteDiv.offset().left) + Number(noteDiv.width());
-    console.log(noteRight);
-    const noteBottom = Number(noteDiv.offset().top) + Number(noteDiv.height());
-    console.log(noteBottom);
+
+
   });
 
   $(document).on('keyup', function(e) {

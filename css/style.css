@@ -6,7 +6,7 @@
 main {
   width: 100%;
   max-width: 100vw;
-  height: 552px;
+  height: 521px;
   margin: 0;
   /* display: flex;
   justify-content: center;
@@ -66,6 +66,14 @@ main {
   background-color: #fedcba;
   padding: 20px;
   left: 30px;
+}
+
+.hit {
+  background-color: #00ff00;
+}
+
+.miss {
+  background-color: #ff0000;
 }
 
 @keyframes notes {
