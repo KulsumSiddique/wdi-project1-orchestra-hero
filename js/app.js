@@ -1,7 +1,7 @@
 $(() => {
   const $startBtn = $('.start');
   const $box = $('div');
-  const $main = $('main');
+  const $main = $('.notes');
   let intervalId;
 
   const audioLowG = new Audio();
@@ -160,6 +160,7 @@ $(() => {
 
   $startBtn.on('click', function() {
     toggleMetronome();
+
     // First subject
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate minim y">y</div>'));
@@ -232,7 +233,6 @@ $(() => {
       audioD.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $box.html('a');
       $main.append($('<div class="animate quaver a">a</div>'));
       audioD.pause();
       audioD.currentTime = 0;
