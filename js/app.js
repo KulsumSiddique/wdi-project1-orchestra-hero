@@ -1,28 +1,9 @@
 $(() => {
-  // Variables
-  let intervalId;
-  let playerScore = 0;
-
-  // DOM variables
   const $startBtn = $('.start');
-  const $box = $('div');
+  const $collisionLines = $('.barlines');
   const $main = $('.notes');
-  const $logScore = $('.score');
-  let $note;
-  const $firstBarLine = $('#first');
-  const firstBlTop = $firstBarLine.offset().top;
-  const firstBlLeft = $firstBarLine.offset().left;
-  const firstBlRight = Number($firstBarLine.offset().left) + Number($firstBarLine.width());
-  const firstBlBottom = Number($firstBarLine.offset().top) + Number($firstBarLine.height());
+  let intervalId;
 
-  console.log(firstBlTop);
-  console.log(firstBlLeft);
-  console.log(firstBlRight);
-  console.log(firstBlBottom);
-
-  $logScore.html(`Score: ${playerScore}`);
-
-  // Audio
   const notes = [];
   const lowG = {
     name: 'low G',
@@ -74,7 +55,7 @@ $(() => {
   };
   const midGs = {
     name: 'mid G sharp',
-    audio: new Audio('sounds/Gswav.wav'),
+    audio: new Audio('sounds/Gshighwav.wav'),
     key: 'U'.charCodeAt(0),
     yPosition: 80
   };
@@ -104,14 +85,14 @@ $(() => {
   };
   const highCS = {
     name: 'high C sharp',
-    audio: new Audio('sounds/Cnsharpwav.wav'),
+    audio: new Audio('sounds/Cshighwav.wav'),
     key: 'P'.charCodeAt(0),
     yPosition: 130
   };
   const highD = {
     name: 'high D',
     audio: new Audio('sounds/Dhighwav.wav'),
-    key: ';'.charCodeAt(0),
+    key: 186,
     yPosition: 140
   };
   notes.push(lowG);
@@ -131,9 +112,8 @@ $(() => {
   notes.push(highD);
 
 
-  const metronome = new Audio('sounds/metronome.mp3');
-
-  console.log($firstBarLine);
+  const metronome = new Audio();
+  metronome.src = 'sounds/metronome.mp3';
 
   function getNoteByKeyCode(code) {
     for(let i = 0; i < notes.length; i++) {
@@ -150,100 +130,20 @@ $(() => {
     console.log(note);
     if(note) {
       note.audio.play();
-      // Now show a div at note.yPosition
+      $collisionLines.append('<div class="keypress"></div>');
+      $('.keypress').css({position: 'absolute', top: note.yPosition});
     }
-    // if (e.which === 90) {
-    //   audioLowG.play();
-    // } else if (e.which === 65) {
-    //   audioB.play();
-    // } else if (e.which === 69) {
-    //   audioCs.play();
-    // } else if (e.which === 68) {
-    //   audioD.play();
-    // } else if (e.which === 70) {
-    //   audioE.play();
-    // } else if (e.which === 71) {
-    //   audioFn.play();
-    // } else if (e.which === 89) {
-    //   audioFs.play();
-    // } else if (e.which === 72) {
-    //   audioG.play();
-    // } else if (e.which === 85) {
-    //   audioGs.play();
-    // } else if (e.which === 74) {
-    //   audioA.play();
-    // } else if (e.which === 73) {
-    //   audioAs.play();
-    // } else if (e.which === 75) {
-    //   audioHighB.play();
-    // } else if (e.which === 76) {
-    //   audioHighCn.play();
-    // } else if (e.which === 80) {
-    //   audioHighCs.play();
-    // } else if (e.which === 186) {
-    //   audioHighD.play();
-    // } else {
-    //   console.log('null');
-    // }
-
   });
+
   $(document).on('keyup', function(e) {
     const note = getNoteByKeyCode(e.which);
     if(note) {
       note.audio.pause();
       note.audio.currentTime = 0;
-      // Now hide the div at note.yPosition
+      $('.keypress').css({display: 'none'});
     }
-    //
-    // if (e.which === 90) {
-    //   audioLowG.pause();
-    //   audioLowG.currentTime = 0;
-    // } else if (e.which === 65) {
-    //   audioB.pause();
-    //   audioB.currentTime = 0;
-    // } else if (e.which === 69) {
-    //   audioCs.pause();
-    //   audioCs.currentTime = 0;
-    // } else if (e.which === 68) {
-    //   audioD.pause();
-    //   audioD.currentTime = 0;
-    // } else if (e.which === 70) {
-    //   audioE.pause();
-    //   audioE.currentTime = 0;
-    // } else if (e.which === 71) {
-    //   audioFn.pause();
-    //   audioFn.currentTime = 0;
-    // } else if (e.which === 89) {
-    //   audioFs.pause();
-    //   audioFs.currentTime = 0;
-    // } else if (e.which === 72) {
-    //   audioG.pause();
-    //   audioG.currentTime = 0;
-    // } else if (e.which === 85) {
-    //   audioGs.pause();
-    //   audioGs.currentTime = 0;
-    // } else if (e.which === 74) {
-    //   audioA.pause();
-    //   audioA.currentTime = 0;
-    // } else if (e.which === 73) {
-    //   audioAs.pause();
-    //   audioAs.currentTime = 0;
-    // } else if (e.which === 75) {
-    //   audioHighB.pause();
-    //   audioHighB.currentTime = 0;
-    // } else if (e.which === 76) {
-    //   audioHighCn.pause();
-    //   audioHighCn.currentTime = 0;
-    // } else if (e.which === 80) {
-    //   audioHighCs.pause();
-    //   audioHighCs.currentTime = 0;
-    // } else if (e.which === 186) {
-    //   audioHighD.pause();
-    //   audioHighD.currentTime = 0;
-    // } else {
-    //   console.log('null');
-    // }
   });
+
 
   function toggleMetronome() {
     const metronomeTest = new Audio();
@@ -262,260 +162,220 @@ $(() => {
   const semibreve = 2856;
   const fiveBeats = 3570;
 
-  // function ifCollide($firstBarLine, $note) {
-  //   const firstBarLineTop = $firstBarLine.offset().top;
-  //   const firstBarLineLeft = $firstBarLine.offset().left;
-  //   const firstBarLineRight = Number($firstBarLine.offset().left) + Number($firstBarLine.width());
-  //   const firstBarLineBottom = Number($firstBarLine.offset().top) + Number($firstBarLine.height());
-  //
-  //   const noteTop = $note.offset().top;
-  //   const noteLeft = $note.offset().left;
-  //   const noteRight = Number($note.offset().left) + Number($note.width());
-  //   const noteBottom = Number($note.offset().top) + Number($note.height());
-  //
-  //
-  //   if (firstBarLineRight > noteLeft && firstBarLineLeft < noteRight && firstBarLineTop < noteBottom && firstBarLineBottom > noteTop) {
-  //     playerScore += 1;
-  //     $logScore.html(`Score: ${playerScore}`);
-  //     $note.addClass('hit');
-  //   } else {
-  //     $note.addClass('miss');
-  //   }
-  // }
 
-  function getNoteOffset (){
-    const noteTop = $note.offset().top;
-    console.log(noteTop);
-    const noteLeft = $note.offset().left;
-    console.log(noteLeft);
-    const noteRight = Number($note.offset().left) + Number($note.width());
-    console.log(noteRight);
-    const noteBottom = Number($note.offset().top) + Number($note.height());
-    console.log(noteBottom);
-    if (firstBlRight > noteLeft && firstBlLeft < noteRight) {
-      console.log('Thing')
-    }
-
-  }
 
   $startBtn.on('click', function() {
     toggleMetronome();
-
-
     // First subject
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate minim y">y</div>'));
-      getNoteOffset();
-      // audioFs.play();
+      $main.append($('<div class="animate minim y">y</div>'));
+      audioFs.play();
     }, millisecs);
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate quaver a">a</div>'));
-      // getNoteOffset();
-      // audioFs.pause();
-      // audioFs.currentTime = 0;
-      // audioB.play();
+      $main.append($('<div class="animate quaver a">a</div>'));
+      audioFs.pause();
+      audioFs.currentTime = 0;
+      audioB.play();
     }, millisecs += minim);
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate quaver e">e</div>'));
-      // getNoteOffset();
-      // audioB.pause();
-      // audioB.currentTime = 0;
-      // audioCs.play();
+      $main.append($('<div class="animate quaver e">e</div>'));
+      audioB.pause();
+      audioB.currentTime = 0;
+      audioCs.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate quaver d">d</div>'));
-      // getNoteOffset();
-      // audioCs.pause();
-      // audioCs.currentTime = 0;
-      // audioD.play();
+      $main.append($('<div class="animate quaver d">d</div>'));
+      audioCs.pause();
+      audioCs.currentTime = 0;
+      audioD.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate quaver f">f</div>'));
-      // audioD.pause();
-      // audioD.currentTime = 0;
-      // audioE.play();
+      $main.append($('<div class="animate quaver f">f</div>'));
+      audioD.pause();
+      audioD.currentTime = 0;
+      audioE.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate dotcrotchet y">y</div>'));
-      // audioE.pause();
-      // audioE.currentTime = 0;
-      // audioFs.play();
+      $main.append($('<div class="animate dotcrotchet y">y</div>'));
+      audioE.pause();
+      audioE.currentTime = 0;
+      audioFs.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate quaver d">d</div>'));
-      // audioFs.pause();
-      // audioFs.currentTime = 0;
-      // audioD.play();
+      $main.append($('<div class="animate quaver d">d</div>'));
+      audioFs.pause();
+      audioFs.currentTime = 0;
+      audioD.play();
     }, millisecs += dotCrotchet);
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate dotcrotchet y">y</div>'));
-      // audioD.pause();
-      // audioD.currentTime = 0;
-      // audioFs.play();
+      $main.append($('<div class="animate dotcrotchet y">y</div>'));
+      audioD.pause();
+      audioD.currentTime = 0;
+      audioFs.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate quaver d">d</div>'));
-      // audioFs.pause();
-      // audioFs.currentTime = 0;
-      // audioD.play();
+      $main.append($('<div class="animate quaver d">d</div>'));
+      audioFs.pause();
+      audioFs.currentTime = 0;
+      audioD.play();
     }, millisecs += dotCrotchet);
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate dotcrotchet y">y</div>'));
-      // audioD.pause();
-      // audioD.currentTime = 0;
-      // audioFs.play();
+      $main.append($('<div class="animate dotcrotchet y">y</div>'));
+      audioD.pause();
+      audioD.currentTime = 0;
+      audioFs.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate quaver a">a</div>'));
-      // audioFs.pause();
-      // audioFs.currentTime = 0;
-      // audioB.play();
+      $main.append($('<div class="animate quaver a">a</div>'));
+      audioFs.pause();
+      audioFs.currentTime = 0;
+      audioB.play();
     }, millisecs += dotCrotchet);
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate quaver d">d</div>'));
-      // audioB.pause();
-      // audioB.currentTime = 0;
-      // audioD.play();
+      $main.append($('<div class="animate quaver d">d</div>'));
+      audioB.pause();
+      audioB.currentTime = 0;
+      audioD.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate quaver a">a</div>'));
-      // audioD.pause();
-      // audioD.currentTime = 0;
-      // audioB.play();
+      $main.append($('<div class="animate quaver a">a</div>'));
+      audioD.pause();
+      audioD.currentTime = 0;
+      audioB.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate quaver z">z</div>'));
-      // audioB.pause();
-      // audioB.currentTime = 0;
-      // audioLowG.play();
+      $main.append($('<div class="animate quaver z">z</div>'));
+      audioB.pause();
+      audioB.currentTime = 0;
+      audioLowG.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate quaver d">d</div>'));
-      // audioLowG.pause();
-      // audioLowG.currentTime = 0;
-      // audioD.play();
+      $main.append($('<div class="animate quaver d">d</div>'));
+      audioLowG.pause();
+      audioLowG.currentTime = 0;
+      audioD.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate minimquaver a">a</div>'));
-      // audioD.pause();
-      // audioD.currentTime = 0;
-      // audioB.play();
+      $main.append($('<div class="animate minimquaver a">a</div>'));
+      audioD.pause();
+      audioD.currentTime = 0;
+      audioB.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate quaver f">f</div>'));
-      // audioB.pause();
-      // audioB.currentTime = 0;
-      // audioE.play();
+      $main.append($('<div class="animate quaver f">f</div>'));
+      audioB.pause();
+      audioB.currentTime = 0;
+      audioE.play();
     }, millisecs += minimPlusQuaver);
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate quaver d">d</div>'));
-      // audioE.pause();
-      // audioE.currentTime = 0;
-      // audioD.play();
+      $main.append($('<div class="animate quaver d">d</div>'));
+      audioE.pause();
+      audioE.currentTime = 0;
+      audioD.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $note = $main.append($('<div class="animate quaver e">e</div>'));
-      // audioD.pause();
-      // audioD.currentTime = 0;
-      // audioCs.play();
+      $main.append($('<div class="animate quaver e">e</div>'));
+      audioD.pause();
+      audioD.currentTime = 0;
+      audioCs.play();
     }, millisecs += quaver);
 
     // First subject recap
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate minim y">y</div>'));
-      // audioCs.pause();
-      // audioCs.currentTime = 0;
-      // audioFs.play();
+      audioCs.pause();
+      audioCs.currentTime = 0;
+      audioFs.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver a">a</div>'));
-      // audioFs.pause();
-      // audioFs.currentTime = 0;
-      // audioB.play();
+      audioFs.pause();
+      audioFs.currentTime = 0;
+      audioB.play();
     }, millisecs += minim);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver e">e</div>'));
-      // audioB.pause();
-      // audioB.currentTime = 0;
-      // audioCs.play();
+      audioB.pause();
+      audioB.currentTime = 0;
+      audioCs.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver d">d</div>'));
-      // audioCs.pause();
-      // audioCs.currentTime = 0;
-      // audioD.play();
+      audioCs.pause();
+      audioCs.currentTime = 0;
+      audioD.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver f">f</div>'));
-      // audioD.pause();
-      // audioD.currentTime = 0;
-      // audioE.play();
+      audioD.pause();
+      audioD.currentTime = 0;
+      audioE.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate dotcrotchet y">y</div>'));
-      // audioE.pause();
-      // audioE.currentTime = 0;
-      // audioFs.play();
-    }, millisecs += quaver);
-    intervalId = setTimeout(() => {
-      $main.append($('<div class="animate quaver d">d</div>'));
-      // audioFs.pause();
-      // audioFs.currentTime = 0;
-      // audioD.play();
-    }, millisecs += dotCrotchet);
-    intervalId = setTimeout(() => {
-      $main.append($('<div class="animate dotcrotchet y">y</div>'));
-      // audioD.pause();
-      // audioD.currentTime = 0;
-      // audioFs.play();
+      audioE.pause();
+      audioE.currentTime = 0;
+      audioFs.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver d">d</div>'));
-      // audioFs.pause();
-      // audioFs.currentTime = 0;
-      // audioD.play();
+      audioFs.pause();
+      audioFs.currentTime = 0;
+      audioD.play();
     }, millisecs += dotCrotchet);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate dotcrotchet y">y</div>'));
-      // audioD.pause();
-      // audioD.currentTime = 0;
-      // audioFs.play();
+      audioD.pause();
+      audioD.currentTime = 0;
+      audioFs.play();
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+      audioFs.pause();
+      audioFs.currentTime = 0;
+      audioD.play();
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotcrotchet y">y</div>'));
+      audioD.pause();
+      audioD.currentTime = 0;
+      audioFs.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver a">a</div>'));
-      // audioFs.pause();
-      // audioFs.currentTime = 0;
-      // audioB.play();
+      audioFs.pause();
+      audioFs.currentTime = 0;
+      audioB.play();
     }, millisecs += dotCrotchet);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver d">d</div>'));
-      // audioB.pause();
-      // audioB.currentTime = 0;
-      // audioD.play();
+      audioB.pause();
+      audioB.currentTime = 0;
+      audioD.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver a">a</div>'));
-      // audioD.pause();
-      // audioD.currentTime = 0;
-      // audioB.play();
+      audioD.pause();
+      audioD.currentTime = 0;
+      audioB.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver z">z</div>'));
-      // audioB.pause();
-      // audioB.currentTime = 0;
-      // audioLowG.play();
+      audioB.pause();
+      audioB.currentTime = 0;
+      audioLowG.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver d">d</div>'));
-      // audioLowG.pause();
-      // audioLowG.currentTime = 0;
-      // audioD.play();
+      audioLowG.pause();
+      audioLowG.currentTime = 0;
+      audioD.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate dotminim a">a</div>'));
-      // audioD.pause();
-      // audioD.currentTime = 0;
-      // audioB.play();
+      audioD.pause();
+      audioD.currentTime = 0;
+      audioB.play();
     }, millisecs += quaver);
 
     // Second subject
@@ -679,7 +539,6 @@ $(() => {
     }, millisecs += crotchet);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver h">h</div>'));
-      $box.html('h');
       audioFs.pause();
       audioFs.currentTime = 0;
       audioG.play();
@@ -2021,5 +1880,7 @@ $(() => {
 
 
   });
+
+
 
 });
