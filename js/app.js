@@ -145,6 +145,7 @@ $(() => {
   });
 
 
+
   function toggleMetronome() {
     const metronomeTest = new Audio();
     metronomeTest.src = 'sounds/metronometest.wav';

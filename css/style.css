@@ -6,7 +6,7 @@
 main {
   width: 100%;
   max-width: 100vw;
-  height: 800px;
+  height: 552px;
   margin: 0;
   /* display: flex;
   justify-content: center;
@@ -36,7 +36,7 @@ main {
 }
 
 /* .three {
-  right: 650px;
+  right: 650px; 12345 12345 12345 1234
 } */
 
 /* #first {
@@ -47,17 +47,18 @@ main {
   width: 100%;
   max-width: 100vw;
   height: 100%;
+  position: relative;
 }
 
 .animate {
   background-color: #ffffff;
   border: 2px solid black;
-  padding: 2px;
   margin: 50px;
   position: absolute;
-  top: 400px;
   animation: notes 11.424s linear forwards;
-  box-sizing: content-box;
+  box-sizing: border-box;
+  height: 30px;
+  width: 30px;
 }
 
 .keypress {
@@ -93,62 +94,76 @@ main {
   }
 }
 
+
 .z {
-  top: 400px;
+  bottom: 0;
 }
 
 .a {
-  top: 340px;
+  bottom: 85px;
 }
 
 .e {
-  top: 300px;
+  /* top: 355px; */
+  bottom: 135px;
 }
 
 .d {
-  top: 280px;
+  /* top: 330px; */
+  bottom: 160px;
 }
 
 .f {
-  top: 240px;
+  /* top: 280px; */
+  bottom: 210px;
 }
 
 .g {
-  top: 220px;
+  /* top: 255px; */
+  bottom: 235px;
 }
 
 .y {
-  top: 200px;
+  /* top: 230px; */
+  bottom: 260px;
 }
 
 .h {
-  top: 180px;
+  /* top: 205px; */
+  bottom: 285px;
 }
 
 .u {
-  top: 160px;
+  /* top: 180px; */
+  bottom: 310px;
 }
 
 .j {
-  top: 140px;
+  /* top: 155px; */
+  bottom: 335px;
 }
 
 .i {
-  top: 120px;
+  /* top: 130px; */
+  bottom: 360px;
 }
 
 .k {
-  top: 100px;
+  /* top: 105px; */
+  bottom: 385px;
 }
 
 .l {
-  top: 60px;
+  /* top: 80px; */
+  bottom: 410px;
 }
 
 .p {
-  top: 40px;
+  /* top: 55px; */
+  bottom: 435px;
 }
 
 .sc {
-  top: 20px;
+  /* top: 30px; */
+  bottom: 460px;
 }
