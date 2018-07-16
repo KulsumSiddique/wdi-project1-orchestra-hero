@@ -9,91 +9,91 @@ $(() => {
     name: 'low G',
     audio: new Audio('sounds/Glow.wav'),
     key: 'Z'.charCodeAt(0),
-    yPosition: 0
+    yPosition: 490
   };
   const midB = {
     name: 'mid B',
     audio: new Audio('sounds/Bwav.wav'),
     key: 'A'.charCodeAt(0),
-    yPosition: 10
+    yPosition: 405
   };
   const midCs = {
     name: 'mid C sharp',
     audio: new Audio('sounds/Cswav.wav'),
     key: 'E'.charCodeAt(0),
-    yPosition: 20
+    yPosition: 355
   };
   const midD = {
     name: 'mid D',
     audio: new Audio('sounds/Dwav.wav'),
     key: 'D'.charCodeAt(0),
-    yPosition: 30
+    yPosition: 330
   };
   const midE = {
     name: 'mid E',
     audio: new Audio('sounds/Ewav.wav'),
     key: 'F'.charCodeAt(0),
-    yPosition: 40
+    yPosition: 280
   };
   const midFn = {
     name: 'mid F natural',
     audio: new Audio('sounds/Fnwav.wav'),
     key: 'G'.charCodeAt(0),
-    yPosition: 50
+    yPosition: 255
   };
   const midFs = {
     name: 'mid F sharp',
     audio: new Audio('sounds/Fswav.wav'),
     key: 'Y'.charCodeAt(0),
-    yPosition: 60
+    yPosition: 230
   };
   const midG = {
     name: 'mid G',
     audio: new Audio('sounds/Gwav.wav'),
     key: 'H'.charCodeAt(0),
-    yPosition: 70
+    yPosition: 205
   };
   const midGs = {
     name: 'mid G sharp',
     audio: new Audio('sounds/Gshighwav.wav'),
     key: 'U'.charCodeAt(0),
-    yPosition: 80
+    yPosition: 180
   };
   const midA = {
     name: 'mid A',
     audio: new Audio('sounds/Awav.wav'),
     key: 'J'.charCodeAt(0),
-    yPosition: 90
+    yPosition: 155
   };
   const midAs = {
     name: 'mid A sharp',
     audio: new Audio('sounds/Ashighwav.wav'),
     key: 'I'.charCodeAt(0),
-    yPosition: 100
+    yPosition: 130
   };
   const highB = {
     name: 'high B',
     audio: new Audio('sounds/Bhighwav.wav'),
     key: 'K'.charCodeAt(0),
-    yPosition: 110
+    yPosition: 105
   };
   const highCN = {
     name: 'high C natural',
     audio: new Audio('sounds/Cnhighwav.wav'),
     key: 'L'.charCodeAt(0),
-    yPosition: 120
+    yPosition: 80
   };
   const highCS = {
     name: 'high C sharp',
     audio: new Audio('sounds/Cshighwav.wav'),
     key: 'P'.charCodeAt(0),
-    yPosition: 130
+    yPosition: 55
   };
   const highD = {
     name: 'high D',
     audio: new Audio('sounds/Dhighwav.wav'),
     key: 186,
-    yPosition: 140
+    yPosition: 30
   };
   notes.push(lowG);
   notes.push(midB);
