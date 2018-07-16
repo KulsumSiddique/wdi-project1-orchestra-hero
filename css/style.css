@@ -1,11 +1,16 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
 main {
   width: 100%;
   max-width: 100vw;
   height: 800px;
   margin: 20px;
   /* display: flex;
-  justify-content: flex-end;
-  align-items: flex-start; */
+  justify-content: center;
+  align-items: center; */
 }
 
 .barlines {
@@ -13,7 +18,7 @@ main {
   justify-content: center;
   align-items: stretch;
   width: 50px;
-  margin: 0 40%;
+  margin: 0 40vw;
 }
 
 .bar {
@@ -67,7 +72,7 @@ main {
   50% {
     padding: 10px;
     background-color: #aa1145;
-    right: 50%;
+    right: 50vw;
   }
   51% {
     padding: 2px;

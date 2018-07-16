@@ -7,149 +7,242 @@ $(() => {
   const $startBtn = $('.start');
   const $box = $('div');
   const $main = $('.notes');
-  const $firstBarLine = $('#first');
   const $logScore = $('.score');
   let $note;
+  const $firstBarLine = $('#first');
+  const firstBlTop = $firstBarLine.offset().top;
+  const firstBlLeft = $firstBarLine.offset().left;
+  const firstBlRight = Number($firstBarLine.offset().left) + Number($firstBarLine.width());
+  const firstBlBottom = Number($firstBarLine.offset().top) + Number($firstBarLine.height());
+
+  console.log(firstBlTop);
+  console.log(firstBlLeft);
+  console.log(firstBlRight);
+  console.log(firstBlBottom);
 
   $logScore.html(`Score: ${playerScore}`);
 
   // Audio
-  const audioLowG = new Audio();
-  audioLowG.src = 'sounds/Glow.wav';
+  const notes = [];
+  const lowG = {
+    name: 'low G',
+    audio: new Audio('sounds/Glow.wav'),
+    key: 'Z'.charCodeAt(0),
+    yPosition: 0
+  };
+  const midB = {
+    name: 'mid B',
+    audio: new Audio('sounds/Bwav.wav'),
+    key: 'A'.charCodeAt(0),
+    yPosition: 10
+  };
+  const midCs = {
+    name: 'mid C sharp',
+    audio: new Audio('sounds/Cswav.wav'),
+    key: 'E'.charCodeAt(0),
+    yPosition: 20
+  };
+  const midD = {
+    name: 'mid D',
+    audio: new Audio('sounds/Dwav.wav'),
+    key: 'D'.charCodeAt(0),
+    yPosition: 30
+  };
+  const midE = {
+    name: 'mid E',
+    audio: new Audio('sounds/Ewav.wav'),
+    key: 'F'.charCodeAt(0),
+    yPosition: 40
+  };
+  const midFn = {
+    name: 'mid F natural',
+    audio: new Audio('sounds/Fnwav.wav'),
+    key: 'G'.charCodeAt(0),
+    yPosition: 50
+  };
+  const midFs = {
+    name: 'mid F sharp',
+    audio: new Audio('sounds/Fswav.wav'),
+    key: 'Y'.charCodeAt(0),
+    yPosition: 60
+  };
+  const midG = {
+    name: 'mid G',
+    audio: new Audio('sounds/Gwav.wav'),
+    key: 'H'.charCodeAt(0),
+    yPosition: 70
+  };
+  const midGs = {
+    name: 'mid G sharp',
+    audio: new Audio('sounds/Gswav.wav'),
+    key: 'U'.charCodeAt(0),
+    yPosition: 80
+  };
+  const midA = {
+    name: 'mid A',
+    audio: new Audio('sounds/Awav.wav'),
+    key: 'J'.charCodeAt(0),
+    yPosition: 90
+  };
+  const midAs = {
+    name: 'mid A sharp',
+    audio: new Audio('sounds/Ashighwav.wav'),
+    key: 'I'.charCodeAt(0),
+    yPosition: 100
+  };
+  const highB = {
+    name: 'high B',
+    audio: new Audio('sounds/Bhighwav.wav'),
+    key: 'K'.charCodeAt(0),
+    yPosition: 110
+  };
+  const highCN = {
+    name: 'high C natural',
+    audio: new Audio('sounds/Cnhighwav.wav'),
+    key: 'L'.charCodeAt(0),
+    yPosition: 120
+  };
+  const highCS = {
+    name: 'high C sharp',
+    audio: new Audio('sounds/Cnsharpwav.wav'),
+    key: 'P'.charCodeAt(0),
+    yPosition: 130
+  };
+  const highD = {
+    name: 'high D',
+    audio: new Audio('sounds/Dhighwav.wav'),
+    key: ';'.charCodeAt(0),
+    yPosition: 140
+  };
+  notes.push(lowG);
+  notes.push(midB);
+  notes.push(midCs);
+  notes.push(midD);
+  notes.push(midE);
+  notes.push(midFn);
+  notes.push(midFs);
+  notes.push(midG);
+  notes.push(midGs);
+  notes.push(midA);
+  notes.push(midAs);
+  notes.push(highB);
+  notes.push(highCN);
+  notes.push(highCS);
+  notes.push(highD);
 
-  const audioB = new Audio();
-  audioB.src = 'sounds/Bwav.wav';
 
-  const audioCs = new Audio();
-  audioCs.src = 'sounds/Cswav.wav';
-
-  const audioD = new Audio();
-  audioD.src = 'sounds/Dwav.wav';
-
-  const audioE = new Audio();
-  audioE.src = 'sounds/Ewav.wav';
-
-  const audioFn = new Audio();
-  audioFn.src = 'sounds/Fnwav.wav';
-
-  const audioFs = new Audio();
-  audioFs.src = 'sounds/Fswav.wav';
-
-  const audioG = new Audio();
-  audioG.src = 'sounds/Gwav.wav';
-
-  const audioGs = new Audio();
-  audioGs.src = 'sounds/Gshighwav.wav';
-
-  const audioA = new Audio();
-  audioA.src = 'sounds/Awav.wav';
-
-  const audioAs = new Audio();
-  audioAs.src = 'sounds/Ashighwav.wav';
-
-  const audioHighB = new Audio();
-  audioHighB.src = 'sounds/Bhighwav.wav';
-
-  const audioHighCn = new Audio();
-  audioHighCn.src = 'sounds/Cnhighwav.wav';
-
-  const audioHighCs = new Audio();
-  audioHighCs.src = 'sounds/Cshighwav.wav';
-
-  const audioHighD = new Audio();
-  audioHighD.src = 'sounds/Dhighwav.wav';
-
-  const metronome = new Audio();
-  metronome.src = 'sounds/metronome.mp3';
+  const metronome = new Audio('sounds/metronome.mp3');
 
   console.log($firstBarLine);
 
+  function getNoteByKeyCode(code) {
+    for(let i = 0; i < notes.length; i++) {
+      console.log(notes[i].key, code);
+      if(notes[i].key === code) {
+        return notes[i];
+      }
+    }
+    return null;
+  }
 
   $(document).on('keydown', function(e) {
-    if (e.which === 90) {
-      audioLowG.play();
-    } else if (e.which === 65) {
-      audioB.play();
-    } else if (e.which === 69) {
-      audioCs.play();
-    } else if (e.which === 68) {
-      audioD.play();
-    } else if (e.which === 70) {
-      audioE.play();
-    } else if (e.which === 71) {
-      audioFn.play();
-    } else if (e.which === 89) {
-      audioFs.play();
-    } else if (e.which === 72) {
-      audioG.play();
-    } else if (e.which === 85) {
-      audioGs.play();
-    } else if (e.which === 74) {
-      audioA.play();
-    } else if (e.which === 73) {
-      audioAs.play();
-    } else if (e.which === 75) {
-      audioHighB.play();
-    } else if (e.which === 76) {
-      audioHighCn.play();
-    } else if (e.which === 80) {
-      audioHighCs.play();
-    } else if (e.which === 186) {
-      audioHighD.play();
-    } else {
-      console.log('null');
+    const note = getNoteByKeyCode(e.which);
+    console.log(note);
+    if(note) {
+      note.audio.play();
+      // Now show a div at note.yPosition
     }
+    // if (e.which === 90) {
+    //   audioLowG.play();
+    // } else if (e.which === 65) {
+    //   audioB.play();
+    // } else if (e.which === 69) {
+    //   audioCs.play();
+    // } else if (e.which === 68) {
+    //   audioD.play();
+    // } else if (e.which === 70) {
+    //   audioE.play();
+    // } else if (e.which === 71) {
+    //   audioFn.play();
+    // } else if (e.which === 89) {
+    //   audioFs.play();
+    // } else if (e.which === 72) {
+    //   audioG.play();
+    // } else if (e.which === 85) {
+    //   audioGs.play();
+    // } else if (e.which === 74) {
+    //   audioA.play();
+    // } else if (e.which === 73) {
+    //   audioAs.play();
+    // } else if (e.which === 75) {
+    //   audioHighB.play();
+    // } else if (e.which === 76) {
+    //   audioHighCn.play();
+    // } else if (e.which === 80) {
+    //   audioHighCs.play();
+    // } else if (e.which === 186) {
+    //   audioHighD.play();
+    // } else {
+    //   console.log('null');
+    // }
 
   });
   $(document).on('keyup', function(e) {
-    if (e.which === 90) {
-      audioLowG.pause();
-      audioLowG.currentTime = 0;
-    } else if (e.which === 65) {
-      audioB.pause();
-      audioB.currentTime = 0;
-    } else if (e.which === 69) {
-      audioCs.pause();
-      audioCs.currentTime = 0;
-    } else if (e.which === 68) {
-      audioD.pause();
-      audioD.currentTime = 0;
-    } else if (e.which === 70) {
-      audioE.pause();
-      audioE.currentTime = 0;
-    } else if (e.which === 71) {
-      audioFn.pause();
-      audioFn.currentTime = 0;
-    } else if (e.which === 89) {
-      audioFs.pause();
-      audioFs.currentTime = 0;
-    } else if (e.which === 72) {
-      audioG.pause();
-      audioG.currentTime = 0;
-    } else if (e.which === 85) {
-      audioGs.pause();
-      audioGs.currentTime = 0;
-    } else if (e.which === 74) {
-      audioA.pause();
-      audioA.currentTime = 0;
-    } else if (e.which === 73) {
-      audioAs.pause();
-      audioAs.currentTime = 0;
-    } else if (e.which === 75) {
-      audioHighB.pause();
-      audioHighB.currentTime = 0;
-    } else if (e.which === 76) {
-      audioHighCn.pause();
-      audioHighCn.currentTime = 0;
-    } else if (e.which === 80) {
-      audioHighCs.pause();
-      audioHighCs.currentTime = 0;
-    } else if (e.which === 186) {
-      audioHighD.pause();
-      audioHighD.currentTime = 0;
-    } else {
-      console.log('null');
+    const note = getNoteByKeyCode(e.which);
+    if(note) {
+      note.audio.pause();
+      note.audio.currentTime = 0;
+      // Now hide the div at note.yPosition
     }
+    //
+    // if (e.which === 90) {
+    //   audioLowG.pause();
+    //   audioLowG.currentTime = 0;
+    // } else if (e.which === 65) {
+    //   audioB.pause();
+    //   audioB.currentTime = 0;
+    // } else if (e.which === 69) {
+    //   audioCs.pause();
+    //   audioCs.currentTime = 0;
+    // } else if (e.which === 68) {
+    //   audioD.pause();
+    //   audioD.currentTime = 0;
+    // } else if (e.which === 70) {
+    //   audioE.pause();
+    //   audioE.currentTime = 0;
+    // } else if (e.which === 71) {
+    //   audioFn.pause();
+    //   audioFn.currentTime = 0;
+    // } else if (e.which === 89) {
+    //   audioFs.pause();
+    //   audioFs.currentTime = 0;
+    // } else if (e.which === 72) {
+    //   audioG.pause();
+    //   audioG.currentTime = 0;
+    // } else if (e.which === 85) {
+    //   audioGs.pause();
+    //   audioGs.currentTime = 0;
+    // } else if (e.which === 74) {
+    //   audioA.pause();
+    //   audioA.currentTime = 0;
+    // } else if (e.which === 73) {
+    //   audioAs.pause();
+    //   audioAs.currentTime = 0;
+    // } else if (e.which === 75) {
+    //   audioHighB.pause();
+    //   audioHighB.currentTime = 0;
+    // } else if (e.which === 76) {
+    //   audioHighCn.pause();
+    //   audioHighCn.currentTime = 0;
+    // } else if (e.which === 80) {
+    //   audioHighCs.pause();
+    //   audioHighCs.currentTime = 0;
+    // } else if (e.which === 186) {
+    //   audioHighD.pause();
+    //   audioHighD.currentTime = 0;
+    // } else {
+    //   console.log('null');
+    // }
   });
 
   function toggleMetronome() {
@@ -190,7 +283,20 @@ $(() => {
   //   }
   // }
 
+  function getNoteOffset (){
+    const noteTop = $note.offset().top;
+    console.log(noteTop);
+    const noteLeft = $note.offset().left;
+    console.log(noteLeft);
+    const noteRight = Number($note.offset().left) + Number($note.width());
+    console.log(noteRight);
+    const noteBottom = Number($note.offset().top) + Number($note.height());
+    console.log(noteBottom);
+    if (firstBlRight > noteLeft && firstBlLeft < noteRight) {
+      console.log('Thing')
+    }
 
+  }
 
   $startBtn.on('click', function() {
     toggleMetronome();
@@ -199,22 +305,26 @@ $(() => {
     // First subject
     intervalId = setTimeout(() => {
       $note = $main.append($('<div class="animate minim y">y</div>'));
+      getNoteOffset();
       // audioFs.play();
     }, millisecs);
     intervalId = setTimeout(() => {
       $note = $main.append($('<div class="animate quaver a">a</div>'));
+      // getNoteOffset();
       // audioFs.pause();
       // audioFs.currentTime = 0;
       // audioB.play();
     }, millisecs += minim);
     intervalId = setTimeout(() => {
       $note = $main.append($('<div class="animate quaver e">e</div>'));
+      // getNoteOffset();
       // audioB.pause();
       // audioB.currentTime = 0;
       // audioCs.play();
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $note = $main.append($('<div class="animate quaver d">d</div>'));
+      // getNoteOffset();
       // audioCs.pause();
       // audioCs.currentTime = 0;
       // audioD.play();
