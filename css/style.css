@@ -29,6 +29,7 @@ main {
   display: inline-block;
   height: 500px;
   position: absolute;
+  left: 30px;
   width: 40px;
   box-sizing: border-box;
   border-left: 3px solid black;
@@ -64,6 +65,7 @@ main {
 .keypress {
   background-color: #fedcba;
   padding: 20px;
+  left: 30px;
 }
 
 @keyframes notes {
