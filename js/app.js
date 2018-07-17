@@ -179,6 +179,10 @@ $(() => {
     }
   });
 
+  $('.notes').on('animationend webkitAnimationEnd oAnimationEnd', '.animate', function (e) {
+    $(e.target).remove();
+  });
+
 
   function toggleMetronome() {
     const metronomeTest = new Audio('sounds/metronometest.wav');
