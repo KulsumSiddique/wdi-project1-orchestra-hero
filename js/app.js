@@ -124,7 +124,6 @@ $(() => {
 
   function getNoteByKeyCode(code) {
     for(let i = 0; i < notes.length; i++) {
-      console.log(notes[i].key, code);
       if(notes[i].key === code) {
         return notes[i];
       }
@@ -160,9 +159,9 @@ $(() => {
       console.log(barRight);
 
       const letter = String.fromCharCode(e.which);
-      const $notesToCheck = $('.' + letter.toLowerCase());
-
-      $notesToCheck.each((i, el) => {
+      const query = '.' + letter.toLowerCase() + ':not(.dead)';
+      const $notesToCheck = $(query);
+      $notesToCheck.first().each((i, el) => {
         const noteLeft = $(el).offset().left;
         console.log('Left:' + noteLeft);
         const noteRight = Number($(el).offset().left) + Number($(el).width());
@@ -175,6 +174,7 @@ $(() => {
         } else {
           $(el).addClass('miss');
           playerScore -= 1;
+          $score.html(`Score: ${playerScore}`);
         }
       });
     }
@@ -220,15 +220,15 @@ $(() => {
     // First subject
     intervalId = setTimeout(() => {
       notesInPlay.push($main.append($('<div class="animate minim y">y</div>')));
-      console.log(notesInPlay);
+      // console.log(notesInPlay);
     }, millisecs);
     intervalId = setTimeout(() => {
       notesInPlay.push($main.append($('<div class="animate quaver a">a</div>')));
-      console.log(notesInPlay);
+      // console.log(notesInPlay);
     }, millisecs += minim);
     intervalId = setTimeout(() => {
       notesInPlay.push($main.append($('<div class="animate quaver e">e</div>')));
-      console.log(notesInPlay);
+      // console.log(notesInPlay);
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
       notesInPlay.push($main.append($('<div class="animate quaver d">d</div>')));
