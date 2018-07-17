@@ -132,15 +132,22 @@ $(() => {
     return null;
   }
 
-  // function createDivFromNote(note) {
-  //   const style = `top: ${note.yPosition}px;`;
-  //   const letter = String.fromCharCode(note.key);
-  //   return `<div  class="user-target" style="${style}">${letter}</div>`;
-  // }
+  setInterval(() => {
+    // Check for dead notes
+    const $notes = $('.animate');
+    if($notes) {
+      for(let i = 0; i < $notes.length; i++) {
+        let left = $notes.eq(i).css('left');
+        left = parseInt(left);
+        if (left <= 475) {
+          $notes.eq(i).addClass('dead');
+        }
+      }
+    }
+  }, 100);
 
   $(document).on('keydown', function(e) {
     const note = getNoteByKeyCode(e.which);
-    // console.log(note);
     if(note) {
       note.audio.play();
       $collisionLines.append('<div class="user-target"></div>');

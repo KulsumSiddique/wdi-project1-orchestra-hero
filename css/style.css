@@ -76,6 +76,11 @@ main {
   background-color: #ff0000;
 }
 
+.dead {
+  background-color: #ababab;
+  border: 3px solid red;
+}
+
 @keyframes notes {
   0% {
     right: 0;
