@@ -87,7 +87,7 @@ main {
   }
   50% {
     padding: 10px;
-    background-color: #aa1145;
+    /* background-color: #aa1145; */
     right: 50vw;
   }
   51% {
