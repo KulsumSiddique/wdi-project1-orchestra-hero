@@ -143,55 +143,32 @@ $(() => {
       $('.keypress').css({position: 'absolute', top: note.yPosition});
 
       // Get dimensions of target area
-      const barTop = $bar.offset().top;
-      console.log(barTop);
       const barLeft = $bar.offset().left;
       console.log(barLeft);
       const barRight = Number($bar.offset().left) + Number($bar.width());
       console.log(barRight);
-      const barBottom = Number($bar.offset().top) + Number($bar.height());
-      console.log(barBottom);
 
-      // Get note dimensions
-      const noteDiv = $('.animate');
-      console.log(noteDiv);
-      const noteTop = noteDiv.offset().top;
-      console.log(noteTop);
-      const noteLeft = noteDiv.offset().left;
-      console.log(noteLeft);
-      const noteRight = Number(noteDiv.offset().left) + Number(noteDiv.width());
-      console.log(noteRight);
-      const noteBottom = Number(noteDiv.offset().top) + Number(noteDiv.height());
-      console.log(noteBottom);
+      const letter = String.fromCharCode(e.which);
+      const $notesToCheck = $('.' + letter.toLowerCase());
 
-      //   note.each(function () {
-      //     note.addClass('hit');
-      //     playerScore += 1;
-      //     $score.html(`Score: ${playerScore}`);
-      //   } else {
-      //     note.addClass('miss');
-      //     playerScore -= 1;
-      //     $score.html(`Score: ${playerScore}`);
-      //   }
-      // });
+      $notesToCheck.each((i, el) => {
+        const noteLeft = $(el).offset().left;
+        console.log('Left:' + noteLeft);
+        const noteRight = Number($(el).offset().left) + Number($(el).width());
+        console.log('Right:' + noteRight);
 
-      for (let j = 0; j < notesInPlay.length; j++) {
-        if (barRight > noteLeft && barLeft < noteRight && barTop < noteBottom && barBottom > noteTop) {
-          notesInPlay[j].addClass('hit');
-          playerScore += 1;
+        if (barRight > noteLeft && barLeft < noteRight) {
+          $(el).addClass('hit');
+          playerScore += 2;
           $score.html(`Score: ${playerScore}`);
         } else {
-          notesInPlay[j].addClass('miss');
+          $(el).addClass('miss');
           playerScore -= 1;
-          $score.html(`Score: ${playerScore}`);
         }
-      }
+      });
     }
-
-
-
-
   });
+
 
   $(document).on('keyup', function(e) {
     const note = getNoteByKeyCode(e.which);
