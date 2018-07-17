@@ -37,7 +37,16 @@ main {
   border-right: 3px solid black;
 }
 
-/* .three {
+.check-miss {
+  border: 2px solid red;
+  display: inline-block;
+  height: 500px;
+  position: absolute;
+  box-sizing: border-box;
+  margin-right: 30px;
+}
+
+/* .collision-checks {
   right: 650px; 12345 12345 12345 1234
 } */
 
@@ -62,10 +71,19 @@ main {
   width: 30px;
 }
 
-.keypress {
+.user-target {
+  box-sizing: border-box;
   background-color: #fedcba;
-  padding: 20px;
-  left: 30px;
+  padding: 0px;
+  left: 0px;
+  position: absolute;
+  height: 25px;
+  width: 34px;
+  border: 1px solid black;
+}
+
+.selected {
+  background-color: red;
 }
 
 .hit {
@@ -74,6 +92,11 @@ main {
 
 .miss {
   background-color: #ff0000;
+}
+
+.dead {
+  background-color: grey;
+  border: 2px red solid;
 }
 
 @keyframes notes {
