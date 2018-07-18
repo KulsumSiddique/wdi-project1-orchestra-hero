@@ -5,12 +5,9 @@ $(() => {
   const $main = $('.notes');
   const $score = $('.score');
   let intervalId;
-  const notesInPlay = [];
 
   let playerScore = 0;
   $score.html(`Score: ${playerScore}`);
-
-
 
   const notes = [];
   const lowG = {
@@ -150,9 +147,10 @@ $(() => {
     const $notes = $('.animate');
     if($notes) {
       for(let i = 0; i < $notes.length; i++) {
-        let left = $notes.eq(i).css('left');
-        left = parseInt(left);
-        if (left <= 475) {
+        const $note = $notes.eq(i);
+        let right = $note.offset().left + $note.width();
+        right = parseFloat(right);
+        if (right <= $bar.offset().left) {
           $notes.eq(i).addClass('dead');
         }
       }
@@ -163,23 +161,23 @@ $(() => {
     const note = getNoteByKeyCode(e.which);
     if(note) {
       note.audio.play();
-      $collisionLines.append('<div class="user-target"></div>');
-      $('.user-target').css({position: 'absolute', top: note.yPosition});
+      const noteLetter = String.fromCharCode(note.key).toLowerCase();
+      $collisionLines.append(`<div class="user-target ${noteLetter}"></div>`);
+      // $collisionLines.append('<div class="user-target"></div>');
+      // $('.user-target').css({position: 'absolute', top: note.yPosition});
 
       // Get dimensions of target area
       const barLeft = $bar.offset().left;
-      console.log(barLeft);
       const barRight = Number($bar.offset().left) + Number($bar.width());
-      console.log(barRight);
 
       const letter = String.fromCharCode(e.which);
-      const query = '.' + letter.toLowerCase() + ':not(.dead)' + ':not(.miss)';
+      const query = '.animate.' + letter.toLowerCase() + ':not(.dead)' + ':not(.miss)';
       const $notesToCheck = $(query);
       $notesToCheck.first().each((i, el) => {
         const noteLeft = $(el).offset().left;
-        console.log('Left:' + noteLeft);
         const noteRight = Number($(el).offset().left) + Number($(el).width());
-        console.log('Right:' + noteRight);
+
+        console.log(`Checking ${barLeft} - ${barRight} : ${noteLeft} - ${noteRight}`);
 
         if (barRight > noteLeft && barLeft < noteRight) {
           $(el).addClass('hit');
@@ -250,64 +248,61 @@ $(() => {
 
     // First subject
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate minim y">y</div>')));
-      // console.log(notesInPlay);
+      $main.append($('<div class="animate minim y">y</div>'));
     }, millisecs);
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate quaver a">a</div>')));
-      // console.log(notesInPlay);
+      $main.append($('<div class="animate quaver a">a</div>'));
     }, millisecs += minim);
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate quaver e">e</div>')));
-      // console.log(notesInPlay);
+      $main.append($('<div class="animate quaver e">e</div>'));
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate quaver d">d</div>')));
+      $main.append($('<div class="animate quaver d">d</div>'));
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate quaver f">f</div>')));
+      $main.append($('<div class="animate quaver f">f</div>'));
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate dotcrotchet y">y</div>')));
+      $main.append($('<div class="animate dotcrotchet y">y</div>'));
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate quaver d">d</div>')));
+      $main.append($('<div class="animate quaver d">d</div>'));
     }, millisecs += dotCrotchet);
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate dotcrotchet y">y</div>')));
+      $main.append($('<div class="animate dotcrotchet y">y</div>'));
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate quaver d">d</div>')));
+      $main.append($('<div class="animate quaver d">d</div>'));
     }, millisecs += dotCrotchet);
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate dotcrotchet y">y</div>')));
+      $main.append($('<div class="animate dotcrotchet y">y</div>'));
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate quaver a">a</div>')));
+      $main.append($('<div class="animate quaver a">a</div>'));
     }, millisecs += dotCrotchet);
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate quaver d">d</div>')));
+      $main.append($('<div class="animate quaver d">d</div>'));
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate quaver a">a</div>')));
+      $main.append($('<div class="animate quaver a">a</div>'));
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate quaver z">z</div>')));
+      $main.append($('<div class="animate quaver z">z</div>'));
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate quaver d">d</div>')));
+      $main.append($('<div class="animate quaver d">d</div>'));
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate minimquaver a">a</div>')));
+      $main.append($('<div class="animate minimquaver a">a</div>'));
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate quaver f">f</div>')));
+      $main.append($('<div class="animate quaver f">f</div>'));
     }, millisecs += minimPlusQuaver);
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate quaver d">d</div>')));
+      $main.append($('<div class="animate quaver d">d</div>'));
     }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      notesInPlay.push($main.append($('<div class="animate quaver e">e</div>')));
+      $main.append($('<div class="animate quaver e">e</div>'));
     }, millisecs += quaver);
 
     // First subject recap

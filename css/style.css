@@ -6,7 +6,8 @@
 main {
   width: 100%;
   max-width: 100vw;
-  height: 518px;
+  height: 100vh;
+  /* height: 518px; */
   /* height should fit perfectly */
   margin: 0;
   /* display: flex;
@@ -14,27 +15,57 @@ main {
   align-items: center; */
 }
 
+.score {
+  position: fixed;
+  top: 30px;
+}
+
+.start {
+  position: fixed;
+  top: 20px;
+  z-index: 2;
+}
+
 .barlines {
   /* display: flex;
   justify-content: center;
   align-items: flex-start; */
   /* width: 50px; */
-  padding: 30px 0;
-  margin: 0 40vw;
+  /* padding: 30px 0;
+  margin: 0 40vw; */
   position: absolute;
-  top: 20px;
+  height: 100%;
+  width: 100%;
 }
 
+.collision-checks {
+  /* display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center; */
+}
+
+/* ----------- */
+/* Target divs */
+/* ----------- */
 .bar {
   background-color: #ffffff;
   display: inline-block;
-  height: 500px;
-  position: absolute;
-  left: 30px;
+  height: 100%;
+  left: 40%;
   width: 40px;
   box-sizing: border-box;
   border-left: 3px solid black;
   border-right: 3px solid black;
+}
+
+.user-target {
+  position: absolute;
+  background-color: #fedcba;
+  padding: 20px;
+  left: calc(40% - 20px);
 }
 
 /* .three {
@@ -54,18 +85,12 @@ main {
 
 .animate {
   border: 2px solid black;
-  margin: 50px;
+  /* margin: 50px; */
   position: absolute;
   animation: notes 11.424s linear forwards;
   box-sizing: border-box;
   height: 30px;
   width: 30px;
-}
-
-.user-target {
-  background-color: #fedcba;
-  padding: 20px;
-  left: 30px;
 }
 
 .hit {
@@ -113,61 +138,61 @@ main {
 
 
 .z {
-  bottom: 0;
+  bottom: calc(100% *  (0 / 518));
 }
 
 .a {
-  bottom: 85px;
+  bottom: calc(100% * (85 / 518));
 }
 
 .e {
-  bottom: 135px;
+  bottom: calc(100% * (135 / 518));
 }
 
 .d {
-  bottom: 160px;
+  bottom: calc(100% * (160 / 518));
 }
 
 .f {
-  bottom: 210px;
+  bottom: calc(100% * (210 / 518));
 }
 
 .g {
-  bottom: 235px;
+  bottom: calc(100% * (235 / 518));
 }
 
 .y {
-  bottom: 260px;
+  bottom: calc(100% * (260 / 518));
 }
 
 .h {
-  bottom: 285px;
+  bottom: calc(100% * (285 / 518));
 }
 
 .u {
-  bottom: 310px;
+  bottom: calc(100% * (310 / 518));
 }
 
 .j {
-  bottom: 335px;
+  bottom: calc(100% * (335 / 518));
 }
 
 .i {
-  bottom: 360px;
+  bottom: calc(100% * (360 / 518));
 }
 
 .k {
-  bottom: 385px;
+  bottom: calc(100% * (385 / 518));
 }
 
 .l {
-  bottom: 410px;
+  bottom: calc(100% * (410 / 518));
 }
 
 .p {
-  bottom: 435px;
+  bottom: calc(100% * (435 / 518));
 }
 
 .sc {
-  bottom: 460px;
+  bottom: calc(100% * (460 / 518));
 }
