@@ -11,6 +11,7 @@ $(() => {
 
   // Intro pages
   const $welcome = $('.welcome');
+  const $setup = $('.setup');
   const $intro = $('.intro');
   const $preAudition = $('.preaudition');
   const $beginAudition = $('.beginaudition');
@@ -41,9 +42,14 @@ $(() => {
     randomCrotale.play();
   });
 
-  $('.tointro').on('click', function() {
+  $('.tosetup').on('click', function() {
     introAudio.pause();
     $welcome.hide();
+    $setup.show();
+  });
+
+  $('.tointro').on('click', function() {
+    $setup.hide();
     $intro.show();
   });
 
