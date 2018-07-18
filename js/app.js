@@ -11,6 +11,7 @@ $(() => {
   $score.html(`Score: ${playerScore}`);
 
 
+
   const notes = [];
   const lowG = {
     name: 'low G',
@@ -130,6 +131,9 @@ $(() => {
   squeaks.push(squeak3);
   squeaks.push(squeak4);
 
+  const booing = new Audio('sounds/boo.mp3');
+  console.log(booing);
+
 
 
   function getNoteByKeyCode(code) {
@@ -186,10 +190,16 @@ $(() => {
           playerScore -= 1;
           $score.html(`Score: ${playerScore}`);
           const randomSqueak = squeaks[Math.floor(Math.random() * squeaks.length)];
-          console.log(randomSqueak);
           randomSqueak.play();
         }
       });
+    }
+    if (playerScore <= -10) {
+      booing.play();
+    }
+    if (playerScore >= -9) {
+      booing.pause();
+      booing.currentTime = 0;
     }
   });
 
