@@ -97,7 +97,7 @@ $(() => {
   const highD = {
     name: 'high D',
     audio: new Audio('sounds/Dhighwav.wav'),
-    key: 186,
+    key: 'M'.charCodeAt(0),
     yPosition: 30
   };
   notes.push(lowG);
@@ -1048,7 +1048,7 @@ $(() => {
 
     /// fff
     intervalId = setTimeout(() => {
-      $main.append($('<div class="animate fivebeats sc">;</div>'));
+      $main.append($('<div class="animate fivebeats m">m</div>'));
     }, millisecs += semibreve);
     intervalId = setTimeout(() => {
     }, millisecs += minimPlusQuaver);
