@@ -196,6 +196,14 @@ $(() => {
     }
     if (playerScore <= -10) {
       booing.play();
+      booing.volume = 0.5;
+    }
+    if (playerScore <= -15) {
+      booing.volume = 0.7;
+    }
+    if (playerScore <= -20) {
+      booing.volume = 1;
+      // End game
     }
     if (playerScore >= -9) {
       booing.pause();
