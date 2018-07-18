@@ -10,7 +10,6 @@ $(() => {
   $score.html(`Score: ${playerScore}`);
 
   // Intro pages
-  const $nextBtn = $('.next');
   const $welcome = $('.welcome');
   const $intro = $('.intro');
   const $preAudition = $('.preaudition');
@@ -21,7 +20,14 @@ $(() => {
   const $preConcert = $('.preconcert');
   const $gamePlay = $('.gameplay');
 
+  const introAudio = new Audio('sounds/orchestra-tuning.mp3');
+
+  $(document).ready(function () {
+    introAudio.play();
+  });
+
   $('.tointro').on('click', function() {
+    introAudio.pause()
     $welcome.hide();
     $intro.show();
   });
