@@ -159,7 +159,7 @@ $(() => {
       console.log(barRight);
 
       const letter = String.fromCharCode(e.which);
-      const query = '.' + letter.toLowerCase() + ':not(.dead)';
+      const query = '.' + letter.toLowerCase() + ':not(.dead)' + ':not(.miss)';
       const $notesToCheck = $(query);
       $notesToCheck.first().each((i, el) => {
         const noteLeft = $(el).offset().left;
@@ -195,9 +195,9 @@ $(() => {
   });
 
 
-  function toggleMetronome() {
-    const metronomeTest = new Audio('sounds/swan-lake-backing.mp3');
-    metronomeTest.play();
+  function toggleBacking() {
+    const backing = new Audio('sounds/swan-lake-test-backing.mp3');
+    backing.play();
   }
 
   let millisecs = 2856;
@@ -214,7 +214,7 @@ $(() => {
 
   $startBtn.on('click', function() {
     intervalId = setTimeout(() => {
-      toggleMetronome();
+      toggleBacking();
     }, 0);
 
     // First subject
