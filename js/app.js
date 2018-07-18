@@ -163,8 +163,6 @@ $(() => {
       note.audio.play();
       const noteLetter = String.fromCharCode(note.key).toLowerCase();
       $collisionLines.append(`<div class="user-target ${noteLetter}"></div>`);
-      // $collisionLines.append('<div class="user-target"></div>');
-      // $('.user-target').css({position: 'absolute', top: note.yPosition});
 
       // Get dimensions of target area
       const barLeft = $bar.offset().left;
@@ -176,8 +174,6 @@ $(() => {
       $notesToCheck.first().each((i, el) => {
         const noteLeft = $(el).offset().left;
         const noteRight = Number($(el).offset().left) + Number($(el).width());
-
-        console.log(`Checking ${barLeft} - ${barRight} : ${noteLeft} - ${noteRight}`);
 
         if (barRight > noteLeft && barLeft < noteRight) {
           $(el).addClass('hit');
