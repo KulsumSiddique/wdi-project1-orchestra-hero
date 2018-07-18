@@ -6,6 +6,27 @@ body {
   height: 100vh;
   max-height: 100%;
 }
+
+/* ----- INTRO PAGES ----- */
+.welcome {
+  background: url("../images/orchestra-hero-sepia.jpg") no-repeat center center;
+  background-size: cover;
+  min-height: 100vh;
+  min-width: 100vw;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+}
+
+.intro, .preaudition, .beginaudition, .audition, .postaudition, .warning, .preconcert, .gameplay {
+  height: 100vh;
+  width: 100vw;
+  display: none;
+}
+
+/* ----- GAME PLAY ----- */
 header {
   height: 10vh;
   max-height: 10%;

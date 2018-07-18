@@ -9,6 +9,59 @@ $(() => {
   let playerScore = 0;
   $score.html(`Score: ${playerScore}`);
 
+  // Intro pages
+  const $nextBtn = $('.next');
+  const $welcome = $('.welcome');
+  const $intro = $('.intro');
+  const $preAudition = $('.preaudition');
+  const $beginAudition = $('.beginaudition');
+  const $audition = $('.audition');
+  const $postAudition = $('.postaudition');
+  const $warning = $('.warning');
+  const $preConcert = $('.preconcert');
+  const $gamePlay = $('.gameplay');
+
+  $('.tointro').on('click', function() {
+    $welcome.hide();
+    $intro.show();
+  });
+
+  $('.topreaud').on('click', function() {
+    $intro.hide();
+    $preAudition.show();
+  });
+
+  $('.tobegaud').on('click', function() {
+    $preAudition.hide();
+    $beginAudition.show();
+  });
+
+  $('.toaud').on('click', function () {
+    $beginAudition.hide();
+    $audition.show();
+  });
+
+  $('.topostaud').on('click', function() {
+    $audition.hide();
+    $postAudition.show();
+  });
+
+  $('.towarning').on('click', function() {
+    $postAudition.hide();
+    $warning.show();
+  });
+
+  $('.topreconcert').on('click', function() {
+    $warning.hide();
+    $preConcert.show();
+  });
+
+  $('.togame').on('click', function() {
+    $preConcert.hide();
+    $gamePlay.show();
+  });
+
+
   const notes = [];
   const lowG = {
     name: 'low G',
