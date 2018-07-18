@@ -118,9 +118,19 @@ $(() => {
   notes.push(highCS);
   notes.push(highD);
 
+  const squeaks = [];
 
-  const metronome = new Audio();
-  metronome.src = 'sounds/metronome.mp3';
+  const squeak1 = new Audio('sounds/squeak1.mp3');
+  const squeak2 = new Audio('sounds/squeak2.mp3');
+  const squeak3 = new Audio('sounds/squeak3.mp3');
+  const squeak4 = new Audio('sounds/squeak4.mp3');
+
+  squeaks.push(squeak1);
+  squeaks.push(squeak2);
+  squeaks.push(squeak3);
+  squeaks.push(squeak4);
+
+
 
   function getNoteByKeyCode(code) {
     for(let i = 0; i < notes.length; i++) {
@@ -175,6 +185,9 @@ $(() => {
           $(el).addClass('miss');
           playerScore -= 1;
           $score.html(`Score: ${playerScore}`);
+          const randomSqueak = squeaks[Math.floor(Math.random() * squeaks.length)];
+          console.log(randomSqueak);
+          randomSqueak.play();
         }
       });
     }
