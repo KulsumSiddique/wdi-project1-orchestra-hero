@@ -27,7 +27,7 @@ $(() => {
   });
 
   $('.tointro').on('click', function() {
-    introAudio.pause()
+    introAudio.pause();
     $welcome.hide();
     $intro.show();
   });
