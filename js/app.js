@@ -196,11 +196,11 @@ $(() => {
 
 
   function toggleMetronome() {
-    const metronomeTest = new Audio('sounds/metronometest.wav');
+    const metronomeTest = new Audio('sounds/swan-lake-backing.mp3');
     metronomeTest.play();
   }
 
-  let millisecs = 0;
+  let millisecs = 2856;
   const triplet = 238;
   const quaver = 357;
   const crotchet = 714;
@@ -1025,87 +1025,87 @@ $(() => {
       $main.append($('<div class="animate fivebeats sc">;</div>'));
     }, millisecs += semibreve);
     intervalId = setTimeout(() => {
-    }, millisecs += fiveBeats);
+    }, millisecs += minimPlusQuaver);
     intervalId = setTimeout(() => {
-    }, millisecs += dotMinim);
-    intervalId = setTimeout(() => {
-      $main.append($('<div class="animate minim d">d</div>'));
-    }, millisecs += minim); // 1
-    intervalId = setTimeout(() => {
-    }, millisecs += minim);
-    intervalId = setTimeout(() => {
-      $main.append($('<div class="animate minim d">d</div>'));
-    }, millisecs += minim); // 2
-    intervalId = setTimeout(() => {
-    }, millisecs += minim);
+    }, millisecs += dotCrotchet);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate crotchet d">d</div>'));
-    }, millisecs += crotchet); // 3
+    }, millisecs += crotchet); // 1
     intervalId = setTimeout(() => {
     }, millisecs += crotchet);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate crotchet d">d</div>'));
-    }, millisecs += crotchet); // 4
+    }, millisecs += crotchet); // 2
     intervalId = setTimeout(() => {
     }, millisecs += crotchet);
     intervalId = setTimeout(() => {
-      $main.append($('<div class="animate crotchet d">d</div>'));
-    }, millisecs += crotchet); // 5
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver); // 3
     intervalId = setTimeout(() => {
-    }, millisecs += crotchet);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $main.append($('<div class="animate crotchet d">d</div>'));
-    }, millisecs += crotchet); // 6
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver); // 4
     intervalId = setTimeout(() => {
-    }, millisecs += crotchet);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $main.append($('<div class="animate crotchet d">d</div>'));
-    }, millisecs += crotchet); // 7
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver); // 5
     intervalId = setTimeout(() => {
-    }, millisecs += crotchet);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $main.append($('<div class="animate crotchet d">d</div>'));
-    }, millisecs += crotchet); // 8
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver); // 6
     intervalId = setTimeout(() => {
-    }, millisecs += crotchet);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $main.append($('<div class="animate crotchet d">d</div>'));
-    }, millisecs += crotchet); // 9
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver); // 7
     intervalId = setTimeout(() => {
-    }, millisecs += crotchet);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
-      $main.append($('<div class="animate crotchet d">d</div>'));
-    }, millisecs += crotchet); // 10
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver); // 8
+    intervalId = setTimeout(() => {
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver); // 9
+    intervalId = setTimeout(() => {
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver); // 10
 
     // Closing melody
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate minim y">y</div>'));
-    }, millisecs += crotchet);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver a">a</div>'));
-    }, millisecs += semibreve);
+    }, millisecs += minim);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver e">e</div>'));
-    }, millisecs += crotchet);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver d">d</div>'));
-    }, millisecs += crotchet);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver f">f</div>'));
-    }, millisecs += crotchet);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate dotcrotchet y">y</div>'));
-    }, millisecs += crotchet);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver d">d</div>'));
-    }, millisecs += dotMinim);
+    }, millisecs += dotCrotchet);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate dotcrotchet y">y</div>'));
-    }, millisecs += crotchet);
+    }, millisecs += quaver);
     intervalId = setTimeout(() => {
       $main.append($('<div class="animate quaver d">d</div>'));
-    }, millisecs += dotMinim);
+    }, millisecs += dotCrotchet);
     intervalId = setTimeout(() => {
-    }, millisecs += crotchet);
+    }, millisecs += quaver);
   });
 });
