@@ -20,6 +20,7 @@ $(() => {
   const $warning = $('.warning');
   const $preConcert = $('.preconcert');
   const $gamePlay = $('.gameplay');
+  const $result = $('.result');
   const $nextBtn = $('.next');
 
   const introAudio = new Audio('sounds/orchestra-tuning.mp3');
@@ -86,6 +87,16 @@ $(() => {
   $('.togame').on('click', function() {
     $preConcert.hide();
     $gamePlay.show();
+  });
+
+  $('.togame-ended').on('click', function() {
+    $result.hide();
+    $gamePlay.show();
+  });
+
+  $('.tosetup-ended').on('click', function() {
+    $result.hide();
+    $setup.show();
   });
 
 
@@ -305,6 +316,28 @@ $(() => {
     backing.play();
   }
 
+  const $finalScore = $('.final-score');
+  const $message = $('.message');
+
+  function endGame() {
+    $gamePlay.hide();
+    $result.show();
+    $finalScore.html(playerScore);
+    if (playerScore <= 50) {
+      $message.html('Quel disastre! My reputation is in ruins because of you! You\'re fired!');
+    } else if (playerScore >= 51 && playerScore <= 120) {
+      $message.html('Sacre bleu! That was a disgrace! You\'re on your last chance before you\'re fired! I have my eye on you…');
+    } else if (playerScore >= 121 && playerScore <= 230) {
+      $message.html('Your performance was unsatisfactory. I will have to demote you to second {instrument}');
+    } else if (playerScore >= 231 && playerScore <= 320) {
+      $message.html('That was good, but your performance was lacking some…je ne sais quoi. You need to practice more.');
+    } else if (playerScore >= 321 && playerScore <= 450) {
+      $message.html('Great job, you fit in with my orchestra very well. However I\'m sure you can do better…');
+    } else {
+      $message.html('Mon dieu! A producer from Deutsche Grammaphon is on the phone offering you a solo record deal after that excellent performance!');
+    }
+  }
+
   let millisecs = 2856;
   const triplet = 238;
   const quaver = 357;
@@ -315,6 +348,7 @@ $(() => {
   const dotMinim = 2142;
   const semibreve = 2856;
   const fiveBeats = 3570;
+  const sixSemibreves = 17136;
 
 
   $startBtn.on('click', function() {
@@ -1209,5 +1243,8 @@ $(() => {
     }, millisecs += dotCrotchet);
     intervalId = setTimeout(() => {
     }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      endGame();
+    }, millisecs += sixSemibreves);
   });
 });
