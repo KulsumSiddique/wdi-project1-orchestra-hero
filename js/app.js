@@ -19,11 +19,26 @@ $(() => {
   const $warning = $('.warning');
   const $preConcert = $('.preconcert');
   const $gamePlay = $('.gameplay');
+  const $nextBtn = $('.next');
 
   const introAudio = new Audio('sounds/orchestra-tuning.mp3');
 
   $(document).ready(function () {
     introAudio.play();
+  });
+
+  const crotales = [];
+  const crotale1 = new Audio('sounds/crotale1.mp3');
+  const crotale2 = new Audio('sounds/crotale2.mp3');
+  const crotale3 = new Audio('sounds/crotale3.mp3');
+
+  crotales.push(crotale1, crotale2, crotale3);
+  console.log(crotales);
+
+  $nextBtn.on('click', function() {
+    const randomCrotale = crotales[Math.floor(Math.random() * crotales.length)];
+    console.log(randomCrotale);
+    randomCrotale.play();
   });
 
   $('.tointro').on('click', function() {
