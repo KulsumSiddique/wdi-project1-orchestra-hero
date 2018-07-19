@@ -42,6 +42,19 @@ strong {
   font-weight: 700;
 }
 
+.tosetup, .tointro, .togame, .toaud, .topreaud, .tobegaud, .topostaud, .towarning, .topreconcert, .reset {
+  font-size: 16px;
+  padding: 10px 15px;
+  background-color: #E3C372;
+  border-radius: 20px;
+  border: none;
+}
+
+.tosetup:hover, .tointro:hover, .togame:hover, .toaud:hover, .topreaud:hover, .tobegaud:hover, .topostaud:hover, .towarning:hover, .topreconcert:hover, .reset:hover {
+  background-color: #E9AB11;
+  transition: .1s
+}
+
 .setup, .intro, .preaudition, .beginaudition, .audition, .postaudition, .warning, .preconcert, .gameplay, .result, .dmaj, .bmin{
   height: 100vh;
   width: 100vw;
@@ -75,10 +88,14 @@ strong {
 .scale {
   display: inline;
   box-sizing: border-box;
-  height: 30px;
-  width: 30px;
+  height: 35px;
+  width: 35px;
   border: 2px solid black;
+  border-radius: 100%;
   position: absolute;
+  font-family: 'Calligraffitti', curisve;
+  font-weight: 700;
+  padding: 10px;
 }
 
 .one {
@@ -151,12 +168,6 @@ main {
   top: 30px; */
 }
 
-.start {
-
-  /* top: 20px;
-  z-index: 2; */
-}
-
 .barlines {
   /* display: flex;
   justify-content: center;
@@ -196,10 +207,6 @@ main {
   border-right: 3px solid black;
 }
 
-.toplay {
-  color: orange;
-}
-
 .user-target {
   position: absolute;
   background-color: rgba(227,195,114,.8);
@@ -232,13 +239,15 @@ main {
 .animate {
   border: 2px solid black;
   border-radius: 100px;
-  margin: 0 -30px;  /*calculate percentage width for this off size of screen */
+  margin: 0 -32px;  /*calculate percentage width for this off size of screen */
   position: absolute;
   animation: notes 11.424s linear forwards;
   box-sizing: border-box;
-  height: 30px;
-  width: 30px;
+  height: 35px;
+  width: 35px;
   font-family: 'Calligraffitti', cursive;
+  font-weight: 700;
+  padding: 8px;
 }
 
 .hit {
@@ -253,17 +262,21 @@ main {
   0% {
     right: 0;
     background-color: #ffffff;
+    opacity: 1;
   }
   49% {
-    padding: 2px;
+    height: 35px;
+    width: 35px;
   }
   50% {
-    padding: 10px;
+    height: 30px;
+    width: 30px;
     /* background-color: #aa1145; */
     right: 50vw;
   }
   51% {
-    padding: 2px;
+    height: 35px;
+    width: 35px;
     opacity: 1;
   }
   75% {
