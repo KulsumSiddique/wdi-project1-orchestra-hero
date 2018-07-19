@@ -98,6 +98,11 @@ main {
   width: 100%;
 }
 
+.notes {
+  background-color: rgba(0, 0, 0, .1);
+  background: radial-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, .1));
+}
+
 .collision-checks {
   display: flex;
   flex-direction: row;
@@ -111,7 +116,7 @@ main {
 /* Target divs */
 /* ----------- */
 .bar {
-  background-color: #ffffff;
+  background-color: rgba(233,171,17,.9);
   display: inline-block;
   height: 100%;
   width: 40px;
@@ -122,7 +127,7 @@ main {
 
 .user-target {
   position: absolute;
-  background-color: #fedcba;
+  background-color: rgba(227,195,114,.8);
   padding: 20px;
   left: calc(50% - 20px);
 }

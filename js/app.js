@@ -56,8 +56,8 @@ $(() => {
   const background = {
     london: 'images/royal-albert-hall-london.jpg',
     milan: 'images/la-scala-milan.jpg',
-    hamburg: 'images/elbphilarmonie-hamburg.jpg',
-    amsterdam: 'images/concertgebouw-amsterdam.jpg',
+    hamburg: 'images/bw-elbphilarmonie-hamburg.jpg',
+    amsterdam: 'images/bw-concertgebouw-amsterdam.jpg',
     nyc: 'images/carnegie-hall-nyc-edited.jpg'
   };
 
