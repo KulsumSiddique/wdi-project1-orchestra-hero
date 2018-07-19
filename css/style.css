@@ -74,6 +74,8 @@ img {
 .choice-container {
   position: absolute;
   left: 2%;
+  height: 90%;
+  width: 95%;
 }
 
 .button-container {
@@ -93,6 +95,8 @@ img {
   position: absolute;
   top: 10%;
   left: 10%;
+  font-family: 'Parisienne', cursive;
+  font-size: 26px;
 }
 
 .gameplay {
@@ -102,10 +106,30 @@ img {
 .info {
   display: block;
   font-weight: 700;
+  font-size: 26px;
+  color: #B7140C;
+  float: right;
+  /* position: absolute;
+  bottom: 1%;
+  right: 1%; */
+  margin: 0 1px 0 5px;
 }
 
 .info:hover {
-  color: red;
+  color: #0CB728;
+}
+
+.choice, .venue {
+  font-size: 16px;
+  display: inline-block;
+  height: 40%;
+}
+
+.hover {
+  position: absolute;
+  bottom: 5%;
+  left: 2%;
+  font-family: 'Calligraffitti', cursive;
 }
 
 .selected-piece, .selected-instr, .selected-venue {
@@ -287,6 +311,7 @@ main {
 }
 
 .animate {
+  background-color: rgba(255, 255, 255, .9);
   border: 2px solid black;
   border-radius: 100px;
   margin: 0 -32px;  /*calculate percentage width for this off size of screen */
@@ -301,7 +326,7 @@ main {
 }
 
 .hit {
-  background-color: #0CB728;
+  background: #0CB728;
 }
 
 .miss {
@@ -311,7 +336,9 @@ main {
 @keyframes notes {
   0% {
     right: 0;
-    background-color: #ffffff;
+    opacity: 0;
+  }
+  20% {
     opacity: 1;
   }
   49% {
@@ -321,13 +348,11 @@ main {
   50% {
     height: 30px;
     width: 30px;
-    /* background-color: #aa1145; */
     right: 50vw;
   }
   51% {
     height: 35px;
     width: 35px;
-    opacity: 1;
   }
   75% {
     opacity: 1;
