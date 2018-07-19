@@ -101,6 +101,9 @@ $(() => {
     $gamePlay.css('background-size', 'cover');
   });
 
+  const bMinor = ['A'.charCodeAt(0), 'E'.charCodeAt(0), 'D'.charCodeAt(0), 'F'.charCodeAt(0), 'Y'.charCodeAt(0), 'H'.charCodeAt(0), 'I'.charCodeAt(0), 'K'.charCodeAt(0)];
+  console.log(bMinor);
+
   $('.tosetup').on('click', function() {
     introAudio.pause();
     $welcome.hide();
