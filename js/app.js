@@ -238,89 +238,8 @@ $(() => {
     return null;
   }
 
-  // get dimensions of miss checker
-  const $missCheck = $('.check-miss');
-  const missLeft = $missCheck.offset().left;
-  const missRight = Number($missCheck.offset().left) + Number($missCheck.width());
-  console.log(missLeft, missRight);
-
-  setInterval(() => {
-    // Check for dead notes
-    const $notes = $('.animate');
-    if($notes) {
-      for(let i = 0; i < $notes.length; i++) {
-        const $note = $notes.eq(i);
-        let right = $note.offset().left + $note.width();
-        right = parseFloat(right);
-        if (right <= $bar.offset().left) {
-          $notes.eq(i).addClass('dead');
-        }
-        if (right <= $bar.offset().left && !$notes.eq(i).hasClass('hit') && !$notes.eq(i).hasClass('miss')) {
-          $notes.eq(i).addClass('miss');
-          playerScore -= 1;
-          $score.html(`Score: ${playerScore}`);
-        }
-      }
-    }
-  }, 100);
-
-
-  $(document).on('keydown', function(e) {
-    const note = getNoteByKeyCode(e.which);
-    if(note) {
-      note.audio.play();
-      const noteLetter = String.fromCharCode(note.key).toLowerCase();
-      $collisionLines.append(`<div class="user-target ${noteLetter}"></div>`);
-
-      // Get dimensions of target area
-      const barLeft = $bar.offset().left;
-      const barRight = Number($bar.offset().left) + Number($bar.width());
-
-      const letter = String.fromCharCode(e.which);
-      const query = '.animate.' + letter.toLowerCase() + ':not(.dead)' + ':not(.miss)';
-      const $notesToCheck = $(query);
-      $notesToCheck.first().each((i, el) => {
-        const noteLeft = $(el).offset().left;
-        const noteRight = Number($(el).offset().left) + Number($(el).width());
-
-        if (barRight > noteLeft && barLeft < noteRight) {
-          $(el).addClass('hit');
-          playerScore += 2;
-          $score.html(`Score: ${playerScore}`);
-          hitStreak += 1;
-          missStreak = 0;
-        } else {
-          $(el).addClass('miss');
-          playerScore -= 1;
-          $score.html(`Score: ${playerScore}`);
-          const randomSqueak = squeaks[Math.floor(Math.random() * squeaks.length)];
-          randomSqueak.play();
-          missStreak += 1;
-          hitStreak = 0;
-        }
-
-        // Bonus points
-        if (hitStreak > 0 && hitStreak % 5 === 0 && hitStreak % 10 !== 0 && hitStreak % 20 !== 0) {
-          playerScore += 5;
-          $score.html(`Score: ${playerScore}`);
-          $bonusMessage.html('Sounding great!');
-        }
-        if (hitStreak > 0 && hitStreak % 10 === 0 & hitStreak % 20 !== 0) {
-          playerScore += 10;
-          $score.html(`Score: ${playerScore}`);
-          $bonusMessage.html('Excellent!');
-        }
-        if (hitStreak > 0 && hitStreak === 20) {
-          playerScore += 20;
-          $score.html(`Score: ${playerScore}`);
-          $bonusMessage.html('Outstanding!');
-        }
-        if (hitStreak < 5) {
-          $bonusMessage.html('');
-        }
-      });
-    }
-    // // Penalties
+  // // Penalties
+  function toggleBooing() {
     if (missStreak > 5 && missStreak < 9) {
       booing.play();
       booing.volume = 0.5;
@@ -359,6 +278,99 @@ $(() => {
       booing.pause();
       booing.currentTime = 0;
     }
+  }
+
+  // get dimensions of miss checker
+  const $missCheck = $('.check-miss');
+  const missLeft = $missCheck.offset().left;
+  const missRight = Number($missCheck.offset().left) + Number($missCheck.width());
+  console.log(missLeft, missRight);
+
+  setInterval(() => {
+    // Check for dead notes
+    const $notes = $('.animate');
+    if($notes) {
+      for(let i = 0; i < $notes.length; i++) {
+        const $note = $notes.eq(i);
+        let right = $note.offset().left + $note.width();
+        right = parseFloat(right);
+        if (right <= $bar.offset().left) {
+          $notes.eq(i).addClass('dead');
+        }
+        if (right <= $bar.offset().left && !$notes.eq(i).hasClass('hit') && !$notes.eq(i).hasClass('miss')) {
+          $notes.eq(i).addClass('miss');
+          playerScore -= 1;
+          $score.html(`Score: ${playerScore}`);
+          const randomSqueak = squeaks[Math.floor(Math.random() * squeaks.length)];
+          randomSqueak.play();
+          missStreak += 1;
+          hitStreak = 0;
+          console.log(missStreak, hitStreak);
+          toggleBooing();
+        }
+      }
+    }
+  }, 100);
+
+
+  $(document).on('keydown', function(e) {
+    const note = getNoteByKeyCode(e.which);
+    if(note) {
+      note.audio.play();
+      const noteLetter = String.fromCharCode(note.key).toLowerCase();
+      $collisionLines.append(`<div class="user-target ${noteLetter}"></div>`);
+
+      // Get dimensions of target area
+      const barLeft = $bar.offset().left;
+      const barRight = Number($bar.offset().left) + Number($bar.width());
+
+      const letter = String.fromCharCode(e.which);
+      const query = '.animate.' + letter.toLowerCase() + ':not(.dead)' + ':not(.miss)';
+      const $notesToCheck = $(query);
+      $notesToCheck.first().each((i, el) => {
+        const noteLeft = $(el).offset().left;
+        const noteRight = Number($(el).offset().left) + Number($(el).width());
+
+        if (barRight > noteLeft && barLeft < noteRight) {
+          $(el).addClass('hit');
+          playerScore += 2;
+          $score.html(`Score: ${playerScore}`);
+          hitStreak += 1;
+          missStreak = 0;
+        } else {
+          $(el).addClass('miss');
+          playerScore -= 1;
+          $score.html(`Score: ${playerScore}`);
+          const randomSqueak = squeaks[Math.floor(Math.random() * squeaks.length)];
+          randomSqueak.play();
+          missStreak += 1;
+          hitStreak = 0;
+
+        }
+
+        // Bonus points
+        if (hitStreak > 0 && hitStreak % 5 === 0 && hitStreak % 10 !== 0 && hitStreak % 20 !== 0) {
+          playerScore += 5;
+          $score.html(`Score: ${playerScore}`);
+          $bonusMessage.html('Sounding great!');
+        }
+        if (hitStreak > 0 && hitStreak % 10 === 0 & hitStreak % 20 !== 0) {
+          playerScore += 10;
+          $score.html(`Score: ${playerScore}`);
+          $bonusMessage.html('Excellent!');
+        }
+        if (hitStreak > 0 && hitStreak === 20) {
+          playerScore += 20;
+          $score.html(`Score: ${playerScore}`);
+          $bonusMessage.html('Outstanding!');
+        }
+        if (hitStreak < 5) {
+          $bonusMessage.html('');
+        }
+        toggleBooing();
+      });
+    }
+
   });
 
 
