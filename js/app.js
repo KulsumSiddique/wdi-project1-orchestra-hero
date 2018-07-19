@@ -92,6 +92,7 @@ $(() => {
   });
 
   $('.togame').on('click', function() {
+    $welcome.hide();
     $preConcert.hide();
     $gamePlay.show();
   });
