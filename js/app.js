@@ -270,7 +270,7 @@ $(() => {
   notes.push(highCS);
   notes.push(highD);
 
-  const bMinor = [];
+  let bMinor = [];
   bMinor.push(midB.key);
   bMinor.push(midCs.key);
   bMinor.push(midD.key);
@@ -282,14 +282,22 @@ $(() => {
 
   console.log(bMinor);
 
+  $('.topostaud').hide();
+
   $(document).on('keydown', function(e) {
     const note = bMinor[0];
     if (e.which === note) {
-      console.log('This bit works' + bMinor[0]);
+      $('.toplay').eq(0).addClass('hit').removeClass('toplay');
+      bMinor.splice(0, 1);
     } else {
-      $('.scale').removeClass('miss');
+      $('.scale').addClass('toplay').removeClass('hit');
+      bMinor = [midB.key, midCs.key, midD.key, midE.key, midFs.key, midG.key, midAs.key, highB.key];
+      const randomSqueak = squeaks[Math.floor(Math.random() * squeaks.length)];
+      randomSqueak.play();
     }
-    bMinor.splice(0, 1);
+    if ($('.viii').hasClass('hit')) {
+      $('.topostaud').show();
+    }
   });
 
 
