@@ -53,10 +53,21 @@ $(() => {
     }, 1200);
   });
 
+  const background = {
+    london: 'images/royal-albert-hall-london.jpg',
+    milan: 'images/la-scala-milan.jpg',
+    hamburg: 'images/elbphilarmonie-hamburg.jpg',
+    amsterdam: 'images/concertgebouw-amsterdam.jpg',
+    nyc: 'images/carnegie-hall-nyc-edited.jpg'
+  };
+
+  console.log(background.london);
+
   let composer;
   let piece;
   let instr;
   let venue;
+  let city;
 
   const $pieceChoice = $('.piece');
   $pieceChoice.on('click', function(e) {
@@ -82,7 +93,13 @@ $(() => {
     const $selected = $(e.target);
     $selected.addClass('selected-venue');
     venue = $selected.attr('name');
-    console.log(composer, piece, instr, venue);
+    city = $selected.attr('city');
+    console.log(composer, piece, instr, venue, city);
+
+    const selectedBg = background[city];
+    console.log(selectedBg);
+    $gamePlay.css('background-image', `url(${selectedBg})`);
+    $gamePlay.css('background-size', 'cover');
   });
 
   $('.tosetup').on('click', function() {
@@ -132,7 +149,7 @@ $(() => {
   });
 
   $('.togame').on('click', function() {
-    $welcome.hide();
+    $setup.hide();
     $preConcert.hide();
     $gamePlay.show();
   });
@@ -140,6 +157,8 @@ $(() => {
   $('.reset').on('click', function() {
     location.reload();
   });
+
+
 
   const notes = [];
   const lowG = {

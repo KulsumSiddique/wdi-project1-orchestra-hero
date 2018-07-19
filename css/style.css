@@ -57,8 +57,8 @@ header {
 }
 
 .gameplay {
-  background: url('../images/carnegie-hall-nyc-edited.jpg');
-  background-size: cover;
+  /* background: url('../images/carnegie-hall-nyc-edited.jpg');
+  background-size: cover; */
 }
 
 main {
