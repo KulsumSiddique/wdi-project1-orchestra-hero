@@ -101,8 +101,7 @@ $(() => {
     $gamePlay.css('background-size', 'cover');
   });
 
-  const bMinor = ['A'.charCodeAt(0), 'E'.charCodeAt(0), 'D'.charCodeAt(0), 'F'.charCodeAt(0), 'Y'.charCodeAt(0), 'H'.charCodeAt(0), 'I'.charCodeAt(0), 'K'.charCodeAt(0)];
-  console.log(bMinor);
+
 
   $('.tosetup').on('click', function() {
     introAudio.pause();
@@ -271,6 +270,40 @@ $(() => {
   notes.push(highCS);
   notes.push(highD);
 
+  const bMinor = [];
+  bMinor.push(midB.key);
+  bMinor.push(midCs.key);
+  bMinor.push(midD.key);
+  bMinor.push(midE.key);
+  bMinor.push(midFs.key);
+  bMinor.push(midG.key);
+  bMinor.push(midAs.key);
+  bMinor.push(highB.key);
+
+  console.log(bMinor);
+
+  $(document).on('keydown', function(e) {
+    const note = bMinor[0];
+    if (e.which === note) {
+      console.log('This bit works' + bMinor[0]);
+    } else {
+      $('.scale').removeClass('miss');
+    }
+    bMinor.splice(0, 1);
+  });
+
+
+
+
+  function getNoteByKeyCode(code) {
+    for(let i = 0; i < notes.length; i++) {
+      if(notes[i].key === code) {
+        return notes[i];
+      }
+    }
+    return null;
+  }
+
   const squeaks = [];
 
   const squeak1 = new Audio('sounds/squeak1.mp3');
@@ -286,16 +319,6 @@ $(() => {
   const booing = new Audio('sounds/boo.mp3');
 
   const backing = new Audio('sounds/swan-lake-test-backing.mp3');
-
-
-  function getNoteByKeyCode(code) {
-    for(let i = 0; i < notes.length; i++) {
-      if(notes[i].key === code) {
-        return notes[i];
-      }
-    }
-    return null;
-  }
 
   // // Penalties
   function toggleBooing() {
