@@ -118,6 +118,12 @@ main {
   left: calc(50% - 20px);
 }
 
+.check-miss {
+  /* border: 4px solid green; */
+  height: 100%;
+  /* padding: 0 10px; */
+  /* margin-right: 10px; */
+}
 /* .three {
   right: 650px; 12345 12345 12345 1234
 } */

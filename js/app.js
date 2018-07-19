@@ -29,8 +29,11 @@ $(() => {
 
   const introAudio = new Audio('sounds/orchestra-tuning.mp3');
 
-  $(document).ready(function () {
+  $welcome.ready(function () {
     introAudio.play();
+    $('.tosetup').on('click', function() {
+      introAudio.volume = 0;
+    });
   });
 
   const crotales = [];
@@ -235,6 +238,12 @@ $(() => {
     return null;
   }
 
+  // get dimensions of miss checker
+  const $missCheck = $('.check-miss');
+  const missLeft = $missCheck.offset().left;
+  const missRight = Number($missCheck.offset().left) + Number($missCheck.width());
+  console.log(missLeft, missRight);
+
   setInterval(() => {
     // Check for dead notes
     const $notes = $('.animate');
@@ -246,9 +255,15 @@ $(() => {
         if (right <= $bar.offset().left) {
           $notes.eq(i).addClass('dead');
         }
+        if (right <= $bar.offset().left && !$notes.eq(i).hasClass('hit') && !$notes.eq(i).hasClass('miss')) {
+          $notes.eq(i).addClass('miss');
+          playerScore -= 1;
+          $score.html(`Score: ${playerScore}`);
+        }
       }
     }
   }, 100);
+
 
   $(document).on('keydown', function(e) {
     const note = getNoteByKeyCode(e.which);
