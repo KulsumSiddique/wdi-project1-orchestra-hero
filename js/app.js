@@ -489,7 +489,6 @@ $(() => {
           randomSqueak.play();
           missStreak += 1;
           hitStreak = 0;
-
         }
 
         // Bonus points

@@ -71,10 +71,15 @@ img {
   left: 5%
 } */
 
+.choice-container {
+  position: absolute;
+  left: 2%;
+}
+
 .button-container {
-  border: 3px solid orange;
-  /* position: fixed; */
-  bottom: 1%;
+  position: absolute;
+  bottom: 2%;
+  left: 2%;
 }
 
 .setup, .intro, .preaudition, .beginaudition, .audition, .postaudition, .warning, .preconcert, .result, .bmin {
