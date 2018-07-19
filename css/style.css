@@ -28,9 +28,9 @@ h1 {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: .2px #E9AB11;
   color: #E3C372;
-  font-size: 140px;
+  font-size: 8.75rem;
   font-weight: 500;
-  margin: 200px 0 50px 0;
+  margin: 15% 0 10% 0;
 }
 
 strong {
@@ -42,6 +42,15 @@ strong {
   height: 100vh;
   width: 100vw;
   display: none;
+}
+
+.info {
+  display: block;
+  font-weight: 700;
+}
+
+.info:hover {
+  color: red;
 }
 
 .selected-piece, .selected-instr, .selected-venue {

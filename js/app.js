@@ -54,6 +54,57 @@ $(() => {
     }, 1200);
   });
 
+  $('.hover-tchaik').hide();
+  $('.hover-oboe').hide();
+  $('.hover-london').hide();
+  $('.hover-milan').hide();
+  $('.hover-amsterdam').hide();
+  $('.hover-hamburg').hide();
+  $('.hover-nyc').hide();
+
+  $('.info-tchaik').on('mouseover', function() {
+    $('.hover-tchaik').show();
+  });
+  $('.info-tchaik').on('mouseout', function() {
+    $('.hover-tchaik').hide();
+  });
+  $('.info-oboe').on('mouseover', function() {
+    $('.hover-oboe').show();
+  });
+  $('.info-oboe').on('mouseout', function() {
+    $('.hover-oboe').hide();
+  });
+  $('.info-london').on('mouseover', function() {
+    $('.hover-london').show();
+  });
+  $('.info-london').on('mouseout', function() {
+    $('.hover-london').hide();
+  });
+  $('.info-milan').on('mouseover', function() {
+    $('.hover-milan').show();
+  });
+  $('.info-milan').on('mouseout', function() {
+    $('.hover-milan').hide();
+  });
+  $('.info-amsterdam').on('mouseover', function() {
+    $('.hover-amsterdam').show();
+  });
+  $('.info-amsterdam').on('mouseout', function() {
+    $('.hover-amsterdam').hide();
+  });
+  $('.info-hamburg').on('mouseover', function() {
+    $('.hover-hamburg').show();
+  });
+  $('.info-hamburg').on('mouseout', function() {
+    $('.hover-hamburg').hide();
+  });
+  $('.info-nyc').on('mouseover', function() {
+    $('.hover-nyc').show();
+  });
+  $('.info-nyc').on('mouseout', function() {
+    $('.hover-nyc').hide();
+  });
+
   const background = {
     london: 'images/bw-royal-albert-hall-london.jpg',
     milan: 'images/bw-la-scala-milan.jpg',
