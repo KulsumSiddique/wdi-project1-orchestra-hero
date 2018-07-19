@@ -44,6 +44,10 @@ $(() => {
   $nextBtn.on('click', function() {
     const randomCrotale = crotales[Math.floor(Math.random() * crotales.length)];
     randomCrotale.play();
+    setTimeout(() => {
+      randomCrotale.pause();
+      randomCrotale.currentTime = 0;
+    }, 1200);
   });
 
   $('.tosetup').on('click', function() {
@@ -92,40 +96,8 @@ $(() => {
     $gamePlay.show();
   });
 
-  $('.togame-ended').on('click', function() {
-    $result.hide();
-    $gamePlay.show();
-    backing.pause();
-    backing.currentTime = 0;
-    booing.pause();
-    booing.currentTime = 0;
-    playerScore = 0;
-    $score.html(`Score: ${playerScore}`);
-    // pause and restart animation
-    $startBtn.on('click', function() {
-      intervalId = setTimeout(() => {
-        toggleBacking();
-        startGame();
-      }, 0);
-    });
-  });
-
-  $('.tosetup-ended').on('click', function() {
-    $result.hide();
-    $setup.show();
-    backing.pause();
-    backing.currentTime = 0;
-    booing.pause();
-    booing.currentTime = 0;
-    playerScore = 0;
-    $score.html(`Score: ${playerScore}`);
-    // pause and restart animation
-    $startBtn.on('click', function() {
-      intervalId = setTimeout(() => {
-        toggleBacking();
-        startGame();
-      }, 0);
-    });
+  $('.reset').on('click', function() {
+    location.reload();
   });
 
 
@@ -397,6 +369,7 @@ $(() => {
 
   function endGame() {
     $gamePlay.hide();
+    $main.hide();
     $result.show();
     $finalScore.html(playerScore);
     if (playerScore <= 50) {
