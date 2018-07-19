@@ -42,17 +42,19 @@ strong {
   font-weight: 700;
 }
 
-.tosetup, .tointro, .togame, .toaud, .topreaud, .tobegaud, .topostaud, .towarning, .topreconcert, .reset {
+.tosetup, .tointro, .togame, .toaud, .topreaud, .tobegaud, .topostaud, .towarning, .topreconcert, .reset, .start {
   font-size: 16px;
   padding: 10px 15px;
+  background: -webkit-linear-gradient(#E3C372, #E9AB11);
   background-color: #E3C372;
   border-radius: 20px;
   border: none;
 }
 
-.tosetup:hover, .tointro:hover, .togame:hover, .toaud:hover, .topreaud:hover, .tobegaud:hover, .topostaud:hover, .towarning:hover, .topreconcert:hover, .reset:hover {
+.tosetup:hover, .tointro:hover, .togame:hover, .toaud:hover, .topreaud:hover, .tobegaud:hover, .topostaud:hover, .towarning:hover, .topreconcert:hover, .start:hover, .reset:hover {
+  background: -webkit-linear-gradient(#E9AB11, #E3C372);
   background-color: #E9AB11;
-  transition: .1s
+  transition: .2s;
 }
 
 .setup, .intro, .preaudition, .beginaudition, .audition, .postaudition, .warning, .preconcert, .gameplay, .result, .dmaj, .bmin{
@@ -251,11 +253,11 @@ main {
 }
 
 .hit {
-  background-color: #00ff00;
+  background-color: #0CB728;
 }
 
 .miss {
-  background-color: #ff0000;
+  background-color: #B7140C;
 }
 
 @keyframes notes {
@@ -358,4 +360,49 @@ footer {
   max-height: 10%;
   /* border: 4px solid #ffffff; */
   margin: 0;
+}
+
+.start {
+  position: absolute;
+  top: 1%;
+  left: 2px;
+}
+
+.bonus {
+  background: -webkit-linear-gradient(#E3C372, #E9AB11);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: .2px #E9AB11;
+  color: #E3C372;
+  font-family: 'Parisienne', cursive;
+  font-size: 40px;
+  position: absolute;
+  top: 1%;
+  right: 2%;
+}
+
+h2 {
+  background: -webkit-linear-gradient(#E3C372, #E9AB11);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: .2px #E9AB11;
+  color: #E3C372;
+  font-size: 48px;
+  font-family: 'Parisienne', cursive;
+  position: absolute;
+  bottom: 1%;
+  left: 1%;
+}
+
+.score {
+  background: -webkit-linear-gradient(#E3C372, #E9AB11);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: .2px #E9AB11;
+  color: #E3C372;
+  font-family: 'Parisienne', cursive;
+  font-size: 40px;
+  position: absolute;
+  bottom: 1%;
+  right: 2%;
 }

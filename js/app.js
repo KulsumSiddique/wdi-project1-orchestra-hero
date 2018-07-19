@@ -133,6 +133,7 @@ $(() => {
     $('.choose-instr').show();
   });
 
+
   const $instrChoice = $('.instrument');
   $instrChoice.on('click', function(e) {
     const $selected = $(e.target);
@@ -214,6 +215,7 @@ $(() => {
   });
 
   $('.togame').on('click', function() {
+    $('.piece').html(piece);
     $setup.hide();
     $preConcert.hide();
     $gamePlay.show();
@@ -533,6 +535,7 @@ $(() => {
   function toggleBacking() {
     backing.play();
     backing.volume = 0.7;
+    $startBtn.hide();
   }
 
   const $finalScore = $('.final-score');
