@@ -68,20 +68,26 @@ $(() => {
   let venue;
   let city;
 
+  $('.tointro').hide();
+  $('.togame').hide();
+  $('.choose-instr').hide();
+  $('.choose-venue').hide();
+
   const $pieceChoice = $('.piece');
   $pieceChoice.on('click', function(e) {
     const $selected = $(e.target);
     $selected.addClass('selected-piece');
     composer = $selected.attr('id');
     piece = $selected.attr('name');
+    $('.choose-instr').show();
   });
-
 
   const $instrChoice = $('.instrument');
   $instrChoice.on('click', function(e) {
     const $selected = $(e.target);
     $selected.addClass('selected-instr');
     instr = $selected.attr('name');
+    $('.choose-venue').show();
   });
 
   const $venueChoice = $('.venue');
@@ -94,6 +100,11 @@ $(() => {
     venue = $selected.attr('name');
     city = $selected.attr('city');
     console.log(composer, piece, instr, venue, city);
+
+    if ($selected.hasClass('selected-venue')) {
+      $('.tointro').show();
+      $('.togame').show();
+    }
 
     const selectedBg = background[city];
     console.log(selectedBg);
@@ -160,8 +171,6 @@ $(() => {
   $('.reset').on('click', function() {
     location.reload();
   });
-
-
 
   const notes = [];
   const lowG = {
@@ -299,9 +308,6 @@ $(() => {
       $('.topostaud').show();
     }
   });
-
-
-
 
   function getNoteByKeyCode(code) {
     for(let i = 0; i < notes.length; i++) {
@@ -475,6 +481,7 @@ $(() => {
 
   function toggleBacking() {
     backing.play();
+    backing.volume = 0.7;
   }
 
   const $finalScore = $('.final-score');
