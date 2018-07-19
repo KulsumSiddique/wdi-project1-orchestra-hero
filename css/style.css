@@ -8,6 +8,10 @@ body {
   font-family: 'Parisienne', cursive;
 }
 
+button {
+  font-family: 'Calligraffitti', cursive;
+}
+
 /* ----- INTRO PAGES ----- */
 .welcome {
   background: url("../images/orchestra-hero-bw.jpg") no-repeat center center;
@@ -234,6 +238,7 @@ main {
   box-sizing: border-box;
   height: 30px;
   width: 30px;
+  font-family: 'Calligraffitti', cursive;
 }
 
 .hit {

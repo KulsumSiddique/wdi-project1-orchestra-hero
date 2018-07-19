@@ -110,7 +110,7 @@ $(() => {
     milan: 'images/bw-la-scala-milan.jpg',
     hamburg: 'images/bw-elbphilarmonie-hamburg.jpg',
     amsterdam: 'images/bw-concertgebouw-amsterdam.jpg',
-    nyc: 'images/bw-carnegie-hall-nyc.jpg'
+    nyc: 'images/bw-carnegie-hall.jpg'
   };
 
   let composer;
