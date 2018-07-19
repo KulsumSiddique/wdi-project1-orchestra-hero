@@ -38,7 +38,7 @@ strong {
   font-weight: 700;
 }
 
-.setup, .intro, .preaudition, .beginaudition, .audition, .postaudition, .warning, .preconcert, .gameplay, .result {
+.setup, .intro, .preaudition, .beginaudition, .audition, .postaudition, .warning, .preconcert, .gameplay, .result, .dmaj, .bmin{
   height: 100vh;
   width: 100vw;
   display: none;
@@ -116,7 +116,7 @@ main {
 /* Target divs */
 /* ----------- */
 .bar {
-  background-color: rgba(233,171,17,.9);
+  background-color: rgba(233,171,17,.5);
   display: inline-block;
   height: 100%;
   width: 40px;

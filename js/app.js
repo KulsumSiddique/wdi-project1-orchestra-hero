@@ -20,6 +20,7 @@ $(() => {
   const $preAudition = $('.preaudition');
   const $beginAudition = $('.beginaudition');
   const $audition = $('.audition');
+  const $bmin = $('.bmin');
   const $postAudition = $('.postaudition');
   const $warning = $('.warning');
   const $preConcert = $('.preconcert');
@@ -54,14 +55,12 @@ $(() => {
   });
 
   const background = {
-    london: 'images/royal-albert-hall-london.jpg',
-    milan: 'images/la-scala-milan.jpg',
+    london: 'images/bw-royal-albert-hall-london.jpg',
+    milan: 'images/bw-la-scala-milan.jpg',
     hamburg: 'images/bw-elbphilarmonie-hamburg.jpg',
     amsterdam: 'images/bw-concertgebouw-amsterdam.jpg',
-    nyc: 'images/carnegie-hall-nyc-edited.jpg'
+    nyc: 'images/bw-carnegie-hall-nyc.jpg'
   };
-
-  console.log(background.london);
 
   let composer;
   let piece;
@@ -126,10 +125,12 @@ $(() => {
   $('.toaud').on('click', function () {
     $beginAudition.hide();
     $audition.show();
+    $bmin.show();
   });
 
   $('.topostaud').on('click', function() {
     $audition.hide();
+    $bmin.hide();
     $postAudition.show();
     $('.instrument').html(instr);
     $('.composer').html(composer);
