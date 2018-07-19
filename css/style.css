@@ -42,6 +42,14 @@ strong {
   font-weight: 700;
 }
 
+img {
+  height: 300px;
+  weight: 300px;
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+}
+
 .tosetup, .tointro, .togame, .toaud, .topreaud, .tobegaud, .topostaud, .towarning, .topreconcert, .reset, .start {
   font-size: 16px;
   padding: 10px 15px;
@@ -57,13 +65,33 @@ strong {
   transition: .2s;
 }
 
-.setup, .intro, .preaudition, .beginaudition, .audition, .postaudition, .warning, .preconcert, .gameplay, .result, .bmin {
+/* .topostaud {
+  position: absolute;
+  bottom: 5%;
+  left: 5%
+} */
+
+.button-container {
+  border: 3px solid orange;
+  /* position: fixed; */
+  bottom: 1%;
+}
+
+.setup, .intro, .preaudition, .beginaudition, .audition, .postaudition, .warning, .preconcert, .result, .bmin {
   height: 80vh;
   width: 80vw;
   display: none;
-  margin: 0 auto;
+  margin: auto auto;
   border: 3px solid green;
   overflow-y: hidden;
+  vertical-align: middle;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+
+.gameplay {
+  display: none;
 }
 
 .info {
@@ -79,11 +107,23 @@ strong {
   color: #ab12ab;
 }
 
+.bmin {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .scale-header {
   height: 20vh;
 }
 .scale-container {
-  height: 80vh;
+  height: 60vh;
+  width: 80vw;
+  box-sizing: border-box;
+  /* position: absolute;
+  top: 0;
+  left: 0; */
+  border: 3px solid red;
 }
 
 .scale-footer {
