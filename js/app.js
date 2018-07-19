@@ -9,6 +9,9 @@ $(() => {
   let playerScore = 0;
   $score.html(`Score: ${playerScore}`);
 
+  let hitStreak = 0;
+  let missStreak = 0;
+
   // Intro pages
   const $welcome = $('.welcome');
   const $setup = $('.setup');
@@ -296,12 +299,20 @@ $(() => {
           $(el).addClass('hit');
           playerScore += 2;
           $score.html(`Score: ${playerScore}`);
+          hitStreak += 1;
+          console.log(`Hit streak is ${hitStreak}`);
+          missStreak = 0;
+          console.log(`Miss streak is ${missStreak}`);
         } else {
           $(el).addClass('miss');
           playerScore -= 1;
           $score.html(`Score: ${playerScore}`);
           const randomSqueak = squeaks[Math.floor(Math.random() * squeaks.length)];
           randomSqueak.play();
+          missStreak += 1;
+          console.log(`Miss streak is ${missStreak}`);
+          hitStreak = 0;
+          console.log(`Hit streak is ${hitStreak}`);
         }
       });
     }
