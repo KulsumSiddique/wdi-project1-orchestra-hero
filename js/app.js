@@ -92,11 +92,37 @@ $(() => {
   $('.togame-ended').on('click', function() {
     $result.hide();
     $gamePlay.show();
+    backing.pause();
+    backing.currentTime = 0;
+    booing.pause();
+    booing.currentTime = 0;
+    playerScore = 0;
+    $score.html(`Score: ${playerScore}`);
+    // pause and restart animation
+    $startBtn.on('click', function() {
+      intervalId = setTimeout(() => {
+        toggleBacking();
+        startGame();
+      }, 0);
+    });
   });
 
   $('.tosetup-ended').on('click', function() {
     $result.hide();
     $setup.show();
+    backing.pause();
+    backing.currentTime = 0;
+    booing.pause();
+    booing.currentTime = 0;
+    playerScore = 0;
+    $score.html(`Score: ${playerScore}`);
+    // pause and restart animation
+    $startBtn.on('click', function() {
+      intervalId = setTimeout(() => {
+        toggleBacking();
+        startGame();
+      }, 0);
+    });
   });
 
 
@@ -350,904 +376,903 @@ $(() => {
   const fiveBeats = 3570;
   const sixSemibreves = 17136;
 
-
   $startBtn.on('click', function() {
     intervalId = setTimeout(() => {
       toggleBacking();
       startGame();
     }, 0);
-
-    function startGame() {
-      // First subject
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate minim y">y</div>'));
-      }, millisecs);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver a">a</div>'));
-      }, millisecs += minim);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver e">e</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver f">f</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate dotcrotchet y">y</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += dotCrotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate dotcrotchet y">y</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += dotCrotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate dotcrotchet y">y</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver a">a</div>'));
-      }, millisecs += dotCrotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver a">a</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver z">z</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate minimquaver a">a</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver f">f</div>'));
-      }, millisecs += minimPlusQuaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver e">e</div>'));
-      }, millisecs += quaver);
-
-      // First subject recap
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate minim y">y</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver a">a</div>'));
-      }, millisecs += minim);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver e">e</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver f">f</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate dotcrotchet y">y</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += dotCrotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate dotcrotchet y">y</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += dotCrotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate dotcrotchet y">y</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver a">a</div>'));
-      }, millisecs += dotCrotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver a">a</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver z">z</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate dotminim a">a</div>'));
-      }, millisecs += quaver);
-
-      // Second subject
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate crotchet a">a</div>'));
-      }, millisecs += dotMinim);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate crotchet e">e</div>'));
-      }, millisecs += crotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate crotchet d">d</div>'));
-      }, millisecs += crotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate crotchet f">f</div>'));
-      }, millisecs += crotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver y">y</div>'));
-      }, millisecs += crotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver h">h</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate dotcrotchet j">j</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver h">h</div>'));
-      }, millisecs += dotCrotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate crotchet y">y</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver h">h</div>'));
-      }, millisecs += crotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver j">j</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate dotcrotchet k">k</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver j">j</div>'));
-      }, millisecs += dotCrotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate crotchet h">h</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver j">j</div>'));
-      }, millisecs += crotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver k">k</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate dotcrotchet p">p</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver k">k</div>'));
-      }, millisecs += dotCrotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver y">y</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver e">e</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver a">a</div>'));
-      }, millisecs += quaver);
-
-      // Second subject recap
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate crotchet e">e</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate crotchet d">d</div>'));
-      }, millisecs += crotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate crotchet f">f</div>'));
-      }, millisecs += crotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver y">y</div>'));
-      }, millisecs += crotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver h">h</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate dotcrotchet j">j</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver h">h</div>'));
-      }, millisecs += dotCrotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate crotchet y">y</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver h">h</div>'));
-      }, millisecs += crotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver j">j</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate dotcrotchet k">k</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver j">j</div>'));
-      }, millisecs += dotCrotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate crotchet h">h</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver j">j</div>'));
-      }, millisecs += crotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver k">k</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate dotcrotchet l">l</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver h">h</div>'));
-      }, millisecs += dotCrotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate crotchet f">f</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver h">h</div>'));
-      }, millisecs += crotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver l">l</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate dotcrotchet p">p</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver u">u</div>'));
-      }, millisecs += dotCrotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate dotcrotchet p">p</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver y">y</div>'));
-      }, millisecs += dotCrotchet);
-
-      // Tutti first subject
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate crotchet k">k</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        // $box.html('');
-      }, millisecs += crotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate semibreve d">d</div>'));
-      }, millisecs += dotMinim);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate dotminim d">d</div>'));
-      }, millisecs += semibreve);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate crotchet f">f</div>'));
-      }, millisecs += dotMinim);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate minim d">d</div>'));
-      }, millisecs += crotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate minim f">f</div>'));
-      }, millisecs += minim);
-
-      // Tutti first subject recap
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate minim y">y</div>'));
-      }, millisecs += minim);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate minim h">h</div>'));
-      }, millisecs += minim);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate fivebeats y">y</div>'));
-      }, millisecs += minim);
-      intervalId = setTimeout(() => {
-        // $box.html('');
-      }, millisecs += fiveBeats);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate crotchet d">d</div>'));
-      }, millisecs += crotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate crotchet f">f</div>'));
-      }, millisecs += crotchet);
-
-      // Triplets bar 1
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet d">d</div>'));
-      }, millisecs += crotchet); // 1
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet d">d</div>'));
-      }, millisecs += triplet); // 2
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet d">d</div>'));
-      }, millisecs += triplet); // 3
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet d">d</div>'));
-      }, millisecs += triplet); // 4
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet d">d</div>'));
-      }, millisecs += triplet); // 5
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet d">d</div>'));
-      }, millisecs += triplet); // 6
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet d">d</div>'));
-      }, millisecs += triplet); // 7
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet d">d</div>'));
-      }, millisecs += triplet); // 8
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet d">d</div>'));
-      }, millisecs += triplet); // 9
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet d">d</div>'));
-      }, millisecs += triplet); // 10
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet d">d</div>'));
-      }, millisecs += triplet); // 11
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet d">d</div>'));
-      }, millisecs += triplet); // 12
-
-      // Triplets bar 2
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 1
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 2
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 3
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 4
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 5
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 6
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 7
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 8
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 9
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 10
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 11
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 12
-
-      // Triplets bar 3
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 1
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 2
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 3
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 4
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 5
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 6
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 7
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 8
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 9
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 10
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 11
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 12
-
-      // Triplets bar 4
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 1
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 2
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 3
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 4
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 5
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 6
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 7
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 8
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 9
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 10
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 11
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 12
-
-      // Triplets bar 5
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet u">u</div>'));
-      }, millisecs += triplet); // 1
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet u">u</div>'));
-      }, millisecs += triplet); // 2
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet u">u</div>'));
-      }, millisecs += triplet); // 3
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet u">u</div>'));
-      }, millisecs += triplet); // 4
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet u">u</div>'));
-      }, millisecs += triplet); // 5
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet u">u</div>'));
-      }, millisecs += triplet); // 6
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet i">i</div>'));
-      }, millisecs += triplet); // 7
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet i">i</div>'));
-      }, millisecs += triplet); // 8
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet i">i</div>'));
-      }, millisecs += triplet); // 9
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 10
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 11
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet d">d</div>'));
-      }, millisecs += triplet); // 12
-
-      // Triplets bar 6
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 1
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 2
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 3
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 4
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 5
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 6
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 7
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 8
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 9
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 10
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 11
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet f">f</div>'));
-      }, millisecs += triplet); // 12
-
-      // Triplets bar 7
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 1
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 2
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 3
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 4
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 5
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 6
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 7
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 8
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 9
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 10
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 11
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 12
-
-      // Triplets bar 8
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 1
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 2
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 3
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 4
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 5
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 6
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet g">g</div>'));
-      }, millisecs += triplet); // 7
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet g">g</div>'));
-      }, millisecs += triplet); // 8
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet g">g</div>'));
-      }, millisecs += triplet); // 9
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet g">g</div>'));
-      }, millisecs += triplet); // 10
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet g">g</div>'));
-      }, millisecs += triplet); // 11
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet g">g</div>'));
-      }, millisecs += triplet); // 12
-
-      // Triplets bar 9
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 1
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 2
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 3
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 4
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 5
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 6
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 7
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 8
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 9
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 10
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 11
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 12
-
-      // Triplets bar 10
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 1
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 2
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 3
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 4
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 5
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 6
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 7
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 8
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 9
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 10
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 11
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 12
-
-      // Triplets bar 11
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 1
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 2
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 3
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 4
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 5
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 6
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 7
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 8
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 9
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 10
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 11
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 12
-
-      // Triplets bar 12
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 1
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 2
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 3
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 4
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 5
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet y">y</div>'));
-      }, millisecs += triplet); // 6
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 7
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 8
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 9
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 10
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 11
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate triplet h">h</div>'));
-      }, millisecs += triplet); // 12
-
-      // Semibreves
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate semibreve h">h</div>'));
-      }, millisecs += triplet); // 1
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate semibreve f">f</div>'));
-      }, millisecs += semibreve); // 2
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate semibreve h">h</div>'));
-      }, millisecs += semibreve); // 3
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate semibreve f">f</div>'));
-      }, millisecs += semibreve); // 4
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate semibreve h">h</div>'));
-      }, millisecs += semibreve); // 5
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate semibreve h">h</div>'));
-      }, millisecs += semibreve); // 6
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate semibreve u">u</div>'));
-      }, millisecs += semibreve); // 7
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate semibreve u">u</div>'));
-      }, millisecs += semibreve); // 8
-
-      // Stringendo
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate minim u">u</div>'));
-      }, millisecs += semibreve); // 1
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate minim u">u</div>'));
-      }, millisecs += minim); // 2
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate minim u">u</div>'));
-      }, millisecs += minim); // 3
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate minim u">u</div>'));
-      }, millisecs += minim); // 4
-
-      // Bars of rest
-      intervalId = setTimeout(() => {
-      }, millisecs += minim); // 1
-      intervalId = setTimeout(() => {
-      }, millisecs += semibreve); // 2
-      intervalId = setTimeout(() => {
-      }, millisecs += semibreve); // 3
-      intervalId = setTimeout(() => {
-      }, millisecs += semibreve); // 4
-
-      /// fff
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate fivebeats m">m</div>'));
-      }, millisecs += semibreve);
-      intervalId = setTimeout(() => {
-      }, millisecs += minimPlusQuaver);
-      intervalId = setTimeout(() => {
-      }, millisecs += dotCrotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate crotchet d">d</div>'));
-      }, millisecs += crotchet); // 1
-      intervalId = setTimeout(() => {
-      }, millisecs += crotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate crotchet d">d</div>'));
-      }, millisecs += crotchet); // 2
-      intervalId = setTimeout(() => {
-      }, millisecs += crotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += quaver); // 3
-      intervalId = setTimeout(() => {
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += quaver); // 4
-      intervalId = setTimeout(() => {
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += quaver); // 5
-      intervalId = setTimeout(() => {
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += quaver); // 6
-      intervalId = setTimeout(() => {
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += quaver); // 7
-      intervalId = setTimeout(() => {
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += quaver); // 8
-      intervalId = setTimeout(() => {
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += quaver); // 9
-      intervalId = setTimeout(() => {
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += quaver); // 10
-
-      // Closing melody
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate minim y">y</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver a">a</div>'));
-      }, millisecs += minim);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver e">e</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver f">f</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate dotcrotchet y">y</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += dotCrotchet);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate dotcrotchet y">y</div>'));
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        $main.append($('<div class="animate quaver d">d</div>'));
-      }, millisecs += dotCrotchet);
-      intervalId = setTimeout(() => {
-      }, millisecs += quaver);
-      intervalId = setTimeout(() => {
-        endGame();
-      }, millisecs += sixSemibreves);
-    }
   });
+
+  function startGame() {
+    // First subject
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate minim y">y</div>'));
+    }, millisecs);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver a">a</div>'));
+    }, millisecs += minim);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver e">e</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver f">f</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotcrotchet y">y</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotcrotchet y">y</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotcrotchet y">y</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver a">a</div>'));
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver a">a</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver z">z</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate minimquaver a">a</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver f">f</div>'));
+    }, millisecs += minimPlusQuaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver e">e</div>'));
+    }, millisecs += quaver);
+
+    // First subject recap
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate minim y">y</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver a">a</div>'));
+    }, millisecs += minim);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver e">e</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver f">f</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotcrotchet y">y</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotcrotchet y">y</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotcrotchet y">y</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver a">a</div>'));
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver a">a</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver z">z</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotminim a">a</div>'));
+    }, millisecs += quaver);
+
+    // Second subject
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate crotchet a">a</div>'));
+    }, millisecs += dotMinim);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate crotchet e">e</div>'));
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate crotchet d">d</div>'));
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate crotchet f">f</div>'));
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver y">y</div>'));
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver h">h</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotcrotchet j">j</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver h">h</div>'));
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate crotchet y">y</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver h">h</div>'));
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver j">j</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotcrotchet k">k</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver j">j</div>'));
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate crotchet h">h</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver j">j</div>'));
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver k">k</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotcrotchet p">p</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver k">k</div>'));
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver y">y</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver e">e</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver a">a</div>'));
+    }, millisecs += quaver);
+
+    // Second subject recap
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate crotchet e">e</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate crotchet d">d</div>'));
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate crotchet f">f</div>'));
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver y">y</div>'));
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver h">h</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotcrotchet j">j</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver h">h</div>'));
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate crotchet y">y</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver h">h</div>'));
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver j">j</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotcrotchet k">k</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver j">j</div>'));
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate crotchet h">h</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver j">j</div>'));
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver k">k</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotcrotchet l">l</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver h">h</div>'));
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate crotchet f">f</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver h">h</div>'));
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver l">l</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotcrotchet p">p</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver u">u</div>'));
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotcrotchet p">p</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver y">y</div>'));
+    }, millisecs += dotCrotchet);
+
+    // Tutti first subject
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate crotchet k">k</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      // $box.html('');
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate semibreve d">d</div>'));
+    }, millisecs += dotMinim);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotminim d">d</div>'));
+    }, millisecs += semibreve);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate crotchet f">f</div>'));
+    }, millisecs += dotMinim);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate minim d">d</div>'));
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate minim f">f</div>'));
+    }, millisecs += minim);
+
+    // Tutti first subject recap
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate minim y">y</div>'));
+    }, millisecs += minim);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate minim h">h</div>'));
+    }, millisecs += minim);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate fivebeats y">y</div>'));
+    }, millisecs += minim);
+    intervalId = setTimeout(() => {
+      // $box.html('');
+    }, millisecs += fiveBeats);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate crotchet d">d</div>'));
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate crotchet f">f</div>'));
+    }, millisecs += crotchet);
+
+    // Triplets bar 1
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet d">d</div>'));
+    }, millisecs += crotchet); // 1
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet d">d</div>'));
+    }, millisecs += triplet); // 2
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet d">d</div>'));
+    }, millisecs += triplet); // 3
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet d">d</div>'));
+    }, millisecs += triplet); // 4
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet d">d</div>'));
+    }, millisecs += triplet); // 5
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet d">d</div>'));
+    }, millisecs += triplet); // 6
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet d">d</div>'));
+    }, millisecs += triplet); // 7
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet d">d</div>'));
+    }, millisecs += triplet); // 8
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet d">d</div>'));
+    }, millisecs += triplet); // 9
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet d">d</div>'));
+    }, millisecs += triplet); // 10
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet d">d</div>'));
+    }, millisecs += triplet); // 11
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet d">d</div>'));
+    }, millisecs += triplet); // 12
+
+    // Triplets bar 2
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 1
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 2
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 3
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 4
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 5
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 6
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 7
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 8
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 9
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 10
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 11
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 12
+
+    // Triplets bar 3
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 1
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 2
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 3
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 4
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 5
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 6
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 7
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 8
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 9
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 10
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 11
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 12
+
+    // Triplets bar 4
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 1
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 2
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 3
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 4
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 5
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 6
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 7
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 8
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 9
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 10
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 11
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 12
+
+    // Triplets bar 5
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet u">u</div>'));
+    }, millisecs += triplet); // 1
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet u">u</div>'));
+    }, millisecs += triplet); // 2
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet u">u</div>'));
+    }, millisecs += triplet); // 3
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet u">u</div>'));
+    }, millisecs += triplet); // 4
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet u">u</div>'));
+    }, millisecs += triplet); // 5
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet u">u</div>'));
+    }, millisecs += triplet); // 6
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet i">i</div>'));
+    }, millisecs += triplet); // 7
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet i">i</div>'));
+    }, millisecs += triplet); // 8
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet i">i</div>'));
+    }, millisecs += triplet); // 9
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 10
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 11
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet d">d</div>'));
+    }, millisecs += triplet); // 12
+
+    // Triplets bar 6
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 1
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 2
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 3
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 4
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 5
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 6
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 7
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 8
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 9
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 10
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 11
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet f">f</div>'));
+    }, millisecs += triplet); // 12
+
+    // Triplets bar 7
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 1
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 2
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 3
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 4
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 5
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 6
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 7
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 8
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 9
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 10
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 11
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 12
+
+    // Triplets bar 8
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 1
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 2
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 3
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 4
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 5
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 6
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet g">g</div>'));
+    }, millisecs += triplet); // 7
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet g">g</div>'));
+    }, millisecs += triplet); // 8
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet g">g</div>'));
+    }, millisecs += triplet); // 9
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet g">g</div>'));
+    }, millisecs += triplet); // 10
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet g">g</div>'));
+    }, millisecs += triplet); // 11
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet g">g</div>'));
+    }, millisecs += triplet); // 12
+
+    // Triplets bar 9
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 1
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 2
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 3
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 4
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 5
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 6
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 7
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 8
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 9
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 10
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 11
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 12
+
+    // Triplets bar 10
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 1
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 2
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 3
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 4
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 5
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 6
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 7
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 8
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 9
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 10
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 11
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 12
+
+    // Triplets bar 11
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 1
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 2
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 3
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 4
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 5
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 6
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 7
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 8
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 9
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 10
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 11
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 12
+
+    // Triplets bar 12
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 1
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 2
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 3
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 4
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 5
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet y">y</div>'));
+    }, millisecs += triplet); // 6
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 7
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 8
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 9
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 10
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 11
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate triplet h">h</div>'));
+    }, millisecs += triplet); // 12
+
+    // Semibreves
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate semibreve h">h</div>'));
+    }, millisecs += triplet); // 1
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate semibreve f">f</div>'));
+    }, millisecs += semibreve); // 2
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate semibreve h">h</div>'));
+    }, millisecs += semibreve); // 3
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate semibreve f">f</div>'));
+    }, millisecs += semibreve); // 4
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate semibreve h">h</div>'));
+    }, millisecs += semibreve); // 5
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate semibreve h">h</div>'));
+    }, millisecs += semibreve); // 6
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate semibreve u">u</div>'));
+    }, millisecs += semibreve); // 7
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate semibreve u">u</div>'));
+    }, millisecs += semibreve); // 8
+
+    // Stringendo
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate minim u">u</div>'));
+    }, millisecs += semibreve); // 1
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate minim u">u</div>'));
+    }, millisecs += minim); // 2
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate minim u">u</div>'));
+    }, millisecs += minim); // 3
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate minim u">u</div>'));
+    }, millisecs += minim); // 4
+
+    // Bars of rest
+    intervalId = setTimeout(() => {
+    }, millisecs += minim); // 1
+    intervalId = setTimeout(() => {
+    }, millisecs += semibreve); // 2
+    intervalId = setTimeout(() => {
+    }, millisecs += semibreve); // 3
+    intervalId = setTimeout(() => {
+    }, millisecs += semibreve); // 4
+
+    /// fff
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate fivebeats m">m</div>'));
+    }, millisecs += semibreve);
+    intervalId = setTimeout(() => {
+    }, millisecs += minimPlusQuaver);
+    intervalId = setTimeout(() => {
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate crotchet d">d</div>'));
+    }, millisecs += crotchet); // 1
+    intervalId = setTimeout(() => {
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate crotchet d">d</div>'));
+    }, millisecs += crotchet); // 2
+    intervalId = setTimeout(() => {
+    }, millisecs += crotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver); // 3
+    intervalId = setTimeout(() => {
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver); // 4
+    intervalId = setTimeout(() => {
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver); // 5
+    intervalId = setTimeout(() => {
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver); // 6
+    intervalId = setTimeout(() => {
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver); // 7
+    intervalId = setTimeout(() => {
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver); // 8
+    intervalId = setTimeout(() => {
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver); // 9
+    intervalId = setTimeout(() => {
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver); // 10
+
+    // Closing melody
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate minim y">y</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver a">a</div>'));
+    }, millisecs += minim);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver e">e</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver f">f</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotcrotchet y">y</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate dotcrotchet y">y</div>'));
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      $main.append($('<div class="animate quaver d">d</div>'));
+    }, millisecs += dotCrotchet);
+    intervalId = setTimeout(() => {
+    }, millisecs += quaver);
+    intervalId = setTimeout(() => {
+      endGame();
+    }, millisecs += sixSemibreves);
+  }
 });
