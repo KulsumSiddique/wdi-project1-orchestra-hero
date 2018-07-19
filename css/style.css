@@ -67,12 +67,12 @@ main {
 }
 
 .score {
-  position: absolute;
-  top: 30px;
+  /* position: absolute;
+  top: 30px; */
 }
 
 .start {
-  position: absolute;
+
   /* top: 20px;
   z-index: 2; */
 }

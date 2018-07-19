@@ -4,6 +4,7 @@ $(() => {
   const $bar = $('.bar');
   const $main = $('.notes');
   const $score = $('.score');
+  const $bonusMessage = $('.bonus');
   let intervalId;
 
   let playerScore = 0;
@@ -42,7 +43,6 @@ $(() => {
 
   $nextBtn.on('click', function() {
     const randomCrotale = crotales[Math.floor(Math.random() * crotales.length)];
-    console.log(randomCrotale);
     randomCrotale.play();
   });
 
@@ -300,9 +300,7 @@ $(() => {
           playerScore += 2;
           $score.html(`Score: ${playerScore}`);
           hitStreak += 1;
-          console.log(`Hit streak is ${hitStreak}`);
           missStreak = 0;
-          console.log(`Miss streak is ${missStreak}`);
         } else {
           $(el).addClass('miss');
           playerScore -= 1;
@@ -310,9 +308,27 @@ $(() => {
           const randomSqueak = squeaks[Math.floor(Math.random() * squeaks.length)];
           randomSqueak.play();
           missStreak += 1;
-          console.log(`Miss streak is ${missStreak}`);
           hitStreak = 0;
-          console.log(`Hit streak is ${hitStreak}`);
+        }
+
+        // Bonus points
+        if (hitStreak > 0 && hitStreak % 5 === 0 && hitStreak % 10 !== 0 && hitStreak % 20 !== 0) {
+          playerScore += 5;
+          $score.html(`Score: ${playerScore}`);
+          $bonusMessage.html('Sounding great!');
+        }
+        if (hitStreak > 0 && hitStreak % 10 === 0 & hitStreak % 20 !== 0) {
+          playerScore += 10;
+          $score.html(`Score: ${playerScore}`);
+          $bonusMessage.html('Excellent!');
+        }
+        if (hitStreak > 0 && hitStreak === 20) {
+          playerScore += 20;
+          $score.html(`Score: ${playerScore}`);
+          $bonusMessage.html('Outstanding!');
+        }
+        if (hitStreak < 5) {
+          $bonusMessage.html('');
         }
       });
     }
