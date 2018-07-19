@@ -332,19 +332,42 @@ $(() => {
         }
       });
     }
+    // // Penalties
+    if (missStreak > 5 && missStreak < 9) {
+      booing.play();
+      booing.volume = 0.5;
+      $bonusMessage.html('You can do better than this!');
+    }
+    if (missStreak > 10 && missStreak < 14) {
+      booing.volume = 0.7;
+      $bonusMessage.html('M. Enmarche will not be pleased!');
+    }
+    if (missStreak === 15) {
+      booing.volume = 1;
+      backing.pause();
+      playerScore = 0;
+      endGame();
+    }
+    if (missStreak < 4) {
+      booing.pause();
+      booing.currentTime = 0;
+    }
+
     if (playerScore <= -10) {
       booing.play();
       booing.volume = 0.5;
+      $bonusMessage.html('You can do better than this!');
     }
     if (playerScore <= -15) {
       booing.volume = 0.7;
+      $bonusMessage.html('M. Enmarche will be furious!');
     }
     if (playerScore <= -20) {
       booing.volume = 1;
       backing.pause();
       endGame();
     }
-    if (playerScore >= -9) {
+    if (playerScore >= -9 && missStreak <= 4) {
       booing.pause();
       booing.currentTime = 0;
     }
