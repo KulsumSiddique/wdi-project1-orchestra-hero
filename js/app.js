@@ -53,6 +53,38 @@ $(() => {
     }, 1200);
   });
 
+  let composer;
+  let piece;
+  let instr;
+  let venue;
+
+  const $pieceChoice = $('.piece');
+  $pieceChoice.on('click', function(e) {
+    const $selected = $(e.target);
+    $selected.addClass('selected-piece');
+    composer = $selected.attr('id');
+    piece = $selected.attr('name');
+  });
+
+
+  const $instrChoice = $('.instrument');
+  $instrChoice.on('click', function(e) {
+    const $selected = $(e.target);
+    $selected.addClass('selected-instr');
+    instr = $selected.attr('name');
+  });
+
+  const $venueChoice = $('.venue');
+  $venueChoice.on('click', function(e) {
+    if ($venueChoice.hasClass('selected-venue')) {
+      $venueChoice.removeClass('selected-venue');
+    }
+    const $selected = $(e.target);
+    $selected.addClass('selected-venue');
+    venue = $selected.attr('name');
+    console.log(composer, piece, instr, venue);
+  });
+
   $('.tosetup').on('click', function() {
     introAudio.pause();
     $welcome.hide();
@@ -82,6 +114,11 @@ $(() => {
   $('.topostaud').on('click', function() {
     $audition.hide();
     $postAudition.show();
+    $('.instrument').html(instr);
+    $('.composer').html(composer);
+    $('.piece').html(piece);
+    $('.venue').html(venue);
+
   });
 
   $('.towarning').on('click', function() {
@@ -103,6 +140,10 @@ $(() => {
   $('.reset').on('click', function() {
     location.reload();
   });
+
+
+
+
 
 
   const notes = [];
@@ -247,7 +288,7 @@ $(() => {
     }
     if (missStreak > 10 && missStreak < 14) {
       booing.volume = 0.7;
-      $bonusMessage.html('M. Enmarche will not be pleased!');
+      $bonusMessage.html('M. Enmarche will be furious!');
     }
     if (missStreak === 15) {
       booing.volume = 1;
@@ -280,12 +321,6 @@ $(() => {
     }
   }
 
-  // get dimensions of miss checker
-  const $missCheck = $('.check-miss');
-  const missLeft = $missCheck.offset().left;
-  const missRight = Number($missCheck.offset().left) + Number($missCheck.width());
-  console.log(missLeft, missRight);
-
   setInterval(() => {
     // Check for dead notes
     const $notes = $('.animate');
@@ -297,6 +332,7 @@ $(() => {
         if (right <= $bar.offset().left) {
           $notes.eq(i).addClass('dead');
         }
+        // Check for notes that have been missed completely
         if (right <= $bar.offset().left && !$notes.eq(i).hasClass('hit') && !$notes.eq(i).hasClass('miss')) {
           $notes.eq(i).addClass('miss');
           playerScore -= 1;

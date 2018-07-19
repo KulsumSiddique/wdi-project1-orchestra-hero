@@ -26,7 +26,7 @@ h1 {
   background: -webkit-linear-gradient(#E3C372, #E9AB11);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  -webkit-text-stroke: 1px #E9AB11;
+  -webkit-text-stroke: .2px #E9AB11;
   color: #E3C372;
   font-size: 140px;
   font-weight: 500;
@@ -42,6 +42,10 @@ strong {
   height: 100vh;
   width: 100vw;
   display: none;
+}
+
+.selected-piece, .selected-instr, .selected-venue {
+  color: #ab12ab;
 }
 
 /* ----- GAME PLAY ----- */
