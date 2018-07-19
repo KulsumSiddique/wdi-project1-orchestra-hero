@@ -141,11 +141,6 @@ $(() => {
     location.reload();
   });
 
-
-
-
-
-
   const notes = [];
   const lowG = {
     name: 'low G',
