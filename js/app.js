@@ -37,6 +37,8 @@ $(() => {
     });
   });
 
+
+
   const crotales = [];
   const crotale1 = new Audio('sounds/crotale1.mp3');
   const crotale2 = new Audio('sounds/crotale2.mp3');
@@ -127,10 +129,12 @@ $(() => {
   const $pieceChoice = $('.piece');
   $pieceChoice.on('click', function(e) {
     const $selected = $(e.target);
-    $selected.addClass('selected-piece');
-    composer = $selected.attr('id');
-    piece = $selected.attr('name');
-    $('.choose-instr').show();
+    if (!$selected.hasClass('.cancel')) {
+      $selected.addClass('selected-piece');
+      composer = $selected.attr('id');
+      piece = $selected.attr('name');
+      $('.choose-instr').show();
+    }
   });
 
 
@@ -167,6 +171,7 @@ $(() => {
 
   $('.tosetup').on('click', function() {
     introAudio.pause();
+    introAudio.currentTime = 0;
     $welcome.hide();
     $setup.show();
   });

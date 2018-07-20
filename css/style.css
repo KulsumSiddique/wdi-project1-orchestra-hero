@@ -181,6 +181,11 @@ img {
   border: 2px solid black;
 }
 
+.selected-piece .cancel, .selected-instr .cancel, .selected-venue .cancel {
+  background: #ffffff;
+  border: none;
+}
+
 .text-container, .instructions {
   position: absolute;
   top: 5%;
