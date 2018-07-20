@@ -103,6 +103,16 @@ img {
   display: none;
 }
 
+.choice-container {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+}
+
+.choose-instr, .choose-venue {
+  margin-top: 2%;
+}
+
 .info {
   display: block;
   font-weight: 700;
@@ -123,17 +133,30 @@ img {
   font-size: 16px;
   display: inline-block;
   height: 40%;
+  background: -webkit-linear-gradient(#E9AB11, #E3C372);
+  background-color: #E3C372
+  border: none;
+  border-radius: 20px;
+  padding: 5px 12px;
+}
+
+.venue {
+  margin-right: -8px;
 }
 
 .hover {
   position: absolute;
-  bottom: 5%;
-  left: 2%;
+  bottom: 15%;
+  left: 0;
   font-family: 'Calligraffitti', cursive;
+  font-size: 20px;
+  border: 3px double black;
+  padding: 5px;
 }
 
 .selected-piece, .selected-instr, .selected-venue {
-  color: #ab12ab;
+  background: #E9AB11;
+  border: 2px solid black;
 }
 
 .bmin {
