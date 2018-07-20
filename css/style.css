@@ -50,8 +50,16 @@ img {
   right: 0%;
 }
 
+.outer {
+  background: url("../images/orchestra-hero-bw.jpg") no-repeat center center;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+}
+
 .tosetup, .tointro, .togame, .toaud, .topreaud, .tobegaud, .topostaud, .towarning, .topreconcert, .reset, .start {
-  font-size: 16px;
+  font-size: 18px;
   padding: 10px 15px;
   background: -webkit-linear-gradient(#E3C372, #E9AB11);
   background-color: #E3C372;
@@ -89,7 +97,7 @@ img {
   width: 80vw;
   display: none;
   margin: auto auto;
-  border: 3px solid green;
+  border: 3px solid black;
   overflow-y: hidden;
   vertical-align: middle;
   position: absolute;
@@ -97,6 +105,7 @@ img {
   left: 10%;
   font-family: 'Parisienne', cursive;
   font-size: 26px;
+  background-color: #ffffff;
 }
 
 .gameplay {
@@ -129,7 +138,7 @@ img {
   color: #0CB728;
 }
 
-.choice, .venue {
+.choice, .venue:not(.cancel) {
   font-size: 16px;
   display: inline-block;
   height: 40%;
@@ -143,6 +152,10 @@ img {
 .venue {
   margin-right: -8px;
 }
+
+/* p span .venue {
+  background-color: #ffffff;
+} */
 
 .hover {
   position: absolute;
@@ -159,6 +172,13 @@ img {
   border: 2px solid black;
 }
 
+.text-container, .instructions {
+  position: absolute;
+  top: 5%;
+  left: 2%;
+  font-size: 28px;
+}
+
 .bmin {
   position: absolute;
   top: 0;
@@ -172,10 +192,9 @@ img {
   height: 60vh;
   width: 80vw;
   box-sizing: border-box;
-  /* position: absolute;
-  top: 0;
-  left: 0; */
-  border: 3px solid red;
+  position: absolute;
+  top: 15%;
+  left: 0;
 }
 
 .scale-footer {
@@ -197,40 +216,40 @@ img {
 
 .one {
   bottom: 45%;
-  left: 35%;
+  left: 15%;
 }
 .ii {
   bottom: 50%;
-  left: 40%;
+  left: 20%;
 }
 .iii {
   bottom: 55%;
-  left: 45%
+  left: 25%
 }
 
 .iv {
   bottom: 60%;
-  left: 50%;
+  left: 30%;
 }
 
 .v {
   bottom: 65%;
-  left: 55%;
+  left: 35%;
 }
 
 .vi {
   bottom: 70%;
-  left: 60%;
+  left: 40%;
 }
 
 .vii {
   bottom: 75%;
-  left: 65%;
+  left: 45%;
 }
 
 .viii {
   bottom: 80%;
-  left: 70%;
+  left: 50%;
 }
 
 /* ----- GAME PLAY ----- */

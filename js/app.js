@@ -159,7 +159,6 @@ $(() => {
     }
 
     const selectedBg = background[city];
-    console.log(selectedBg);
     $gamePlay.css('background-image', `url(${selectedBg})`);
     $gamePlay.css('background-size', 'cover');
   });
@@ -216,6 +215,7 @@ $(() => {
 
   $('.togame').on('click', function() {
     $('.piece').html(piece);
+    $('.outer').hide();
     $setup.hide();
     $preConcert.hide();
     $gamePlay.show();
@@ -543,6 +543,7 @@ $(() => {
   function endGame() {
     $gamePlay.hide();
     $main.hide();
+    $('.outer').show();
     $result.show();
     $finalScore.html(playerScore);
     if (playerScore <= 50) {
