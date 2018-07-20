@@ -361,6 +361,7 @@ $(() => {
       bMinor = [midB.key, midCs.key, midD.key, midE.key, midFs.key, midG.key, midAs.key, highB.key];
       const randomSqueak = squeaks[Math.floor(Math.random() * squeaks.length)];
       randomSqueak.play();
+      randomSqueak.volume = 0.3;
     }
     if ($('.viii').hasClass('hit')) {
       $('.topostaud').show();
@@ -452,6 +453,7 @@ $(() => {
           $score.html(`Score: ${playerScore}`);
           const randomSqueak = squeaks[Math.floor(Math.random() * squeaks.length)];
           randomSqueak.play();
+          randomSqueak.currentTime = 0.5;
           missStreak += 1;
           hitStreak = 0;
           console.log(missStreak, hitStreak);
@@ -492,6 +494,7 @@ $(() => {
           $score.html(`Score: ${playerScore}`);
           const randomSqueak = squeaks[Math.floor(Math.random() * squeaks.length)];
           randomSqueak.play();
+          randomSqueak = 0.5;
           missStreak += 1;
           hitStreak = 0;
         }
@@ -538,7 +541,7 @@ $(() => {
 
   function toggleBacking() {
     backing.play();
-    backing.volume = 0.7;
+    backing.volume = 0.3;
     $startBtn.hide();
   }
 
