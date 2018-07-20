@@ -42,6 +42,14 @@ strong {
   font-weight: 700;
 }
 
+.copyright {
+  color: #E9AB11;
+  position: absolute;
+  bottom: 2%;
+  left: 45%;
+  font-size: 18px;
+}
+
 img {
   height: 300px;
   weight: 300px;
@@ -70,6 +78,7 @@ img {
 .tosetup:hover, .tointro:hover, .togame:hover, .toaud:hover, .topreaud:hover, .tobegaud:hover, .topostaud:hover, .towarning:hover, .topreconcert:hover, .start:hover, .reset:hover {
   background: -webkit-linear-gradient(#E9AB11, #E3C372);
   background-color: #E9AB11;
+  padding: 12px 17px;
   transition: .2s;
 }
 
