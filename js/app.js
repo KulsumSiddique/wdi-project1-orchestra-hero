@@ -37,7 +37,16 @@ $(() => {
     });
   });
 
-
+  const $toSetUp = $('.tosetup');
+  const $toIntro = $('.tointro');
+  const $toPreAud = $('.topreaud');
+  const $toBegAud = $('.tobegaud');
+  const $toAud = $('.toaud');
+  const $toPostAud = $('.topostaud');
+  const $toWarning = $('.towarning');
+  const $toPreConcert = $('.topreconcert');
+  const $toGame = $('.togame');
+  const $resetBtn = $('.reset');
 
   const crotales = [];
   const crotale1 = new Audio('sounds/crotale1.mp3');
@@ -45,67 +54,49 @@ $(() => {
   const crotale3 = new Audio('sounds/crotale3.mp3');
 
   crotales.push(crotale1, crotale2, crotale3);
-  console.log(crotales);
 
-  $nextBtn.on('click', function() {
+  function toggleCrotale() {
     const randomCrotale = crotales[Math.floor(Math.random() * crotales.length)];
     randomCrotale.play();
     setTimeout(() => {
       randomCrotale.pause();
       randomCrotale.currentTime = 0;
     }, 1200);
-  });
+  }
 
-  $('.hover-tchaik').hide();
-  $('.hover-oboe').hide();
-  $('.hover-london').hide();
-  $('.hover-milan').hide();
-  $('.hover-amsterdam').hide();
-  $('.hover-hamburg').hide();
-  $('.hover-nyc').hide();
+  $nextBtn.on('click', toggleCrotale);
 
-  $('.info-tchaik').on('mouseover', function() {
-    $('.hover-tchaik').show();
-  });
-  $('.info-tchaik').on('mouseout', function() {
-    $('.hover-tchaik').hide();
-  });
-  $('.info-oboe').on('mouseover', function() {
-    $('.hover-oboe').show();
-  });
-  $('.info-oboe').on('mouseout', function() {
-    $('.hover-oboe').hide();
-  });
-  $('.info-london').on('mouseover', function() {
-    $('.hover-london').show();
-  });
-  $('.info-london').on('mouseout', function() {
-    $('.hover-london').hide();
-  });
-  $('.info-milan').on('mouseover', function() {
-    $('.hover-milan').show();
-  });
-  $('.info-milan').on('mouseout', function() {
-    $('.hover-milan').hide();
-  });
-  $('.info-amsterdam').on('mouseover', function() {
-    $('.hover-amsterdam').show();
-  });
-  $('.info-amsterdam').on('mouseout', function() {
-    $('.hover-amsterdam').hide();
-  });
-  $('.info-hamburg').on('mouseover', function() {
-    $('.hover-hamburg').show();
-  });
-  $('.info-hamburg').on('mouseout', function() {
-    $('.hover-hamburg').hide();
-  });
-  $('.info-nyc').on('mouseover', function() {
-    $('.hover-nyc').show();
-  });
-  $('.info-nyc').on('mouseout', function() {
-    $('.hover-nyc').hide();
-  });
+  const $infoTchaik = $('.info-tchaik');
+  const $infoOboe = $('.info-oboe');
+  const $infoLondon = $('.info-london');
+  const $infoMilan = $('.info-milan');
+  const $infoAmsterdam = $('.info-amsterdam');
+  const $infoHamburg = $('.info-hamburg');
+  const $infoNyc = $('.info-nyc');
+  const $hoverTchaik = $('.hover-tchaik').hide();
+  const $hoverOboe = $('.hover-oboe').hide();
+  const $hoverLondon = $('.hover-london').hide();
+  const $hoverMilan = $('.hover-milan').hide();
+  const $hoverAmsterdam = $('.hover-amsterdam').hide();
+  const $hoverHamburg = $('.hover-hamburg').hide();
+  const $hoverNyc = $('.hover-nyc').hide();
+
+  function toggleInfo (info, hover) {
+    info.on('mouseover', function() {
+      hover.show();
+    });
+    info.on('mouseout', function() {
+      hover.hide();
+    });
+  }
+
+  toggleInfo($infoTchaik, $hoverTchaik);
+  toggleInfo($infoOboe, $hoverOboe);
+  toggleInfo($infoLondon, $hoverLondon);
+  toggleInfo($infoMilan, $hoverMilan);
+  toggleInfo($infoAmsterdam, $hoverAmsterdam);
+  toggleInfo($infoHamburg, $hoverHamburg);
+  toggleInfo($infoNyc, $hoverNyc);
 
   const background = {
     london: 'images/bw-royal-albert-hall-london.jpg',
@@ -121,8 +112,8 @@ $(() => {
   let venue;
   let city;
 
-  $('.tointro').hide();
-  $('.togame').hide();
+  $toIntro.hide();
+  $toGame.hide();
   $('.choose-instr').hide();
   $('.choose-venue').hide();
 
@@ -155,7 +146,6 @@ $(() => {
     $selected.addClass('selected-venue');
     venue = $selected.attr('name');
     city = $selected.attr('city');
-    console.log(composer, piece, instr, venue, city);
 
     if ($selected.hasClass('selected-venue')) {
       $('.tointro').show();
@@ -169,35 +159,27 @@ $(() => {
 
 
 
-  $('.tosetup').on('click', function() {
-    introAudio.pause();
-    introAudio.currentTime = 0;
-    $welcome.hide();
-    $setup.show();
-  });
+  function toNextScreen(button, toHide, toShow) {
+    button.on('click', function() {
+      toHide.hide();
+      toShow.show();
+    });
+  }
 
-  $('.tointro').on('click', function() {
-    $setup.hide();
-    $intro.show();
-  });
+  toNextScreen($toSetUp, $welcome, $setup);
+  toNextScreen($toIntro, $setup, $intro);
+  toNextScreen($toPreAud, $intro, $preAudition);
+  toNextScreen($toBegAud, $preAudition, $beginAudition);
+  toNextScreen($toWarning, $postAudition, $warning);
+  toNextScreen($toPreConcert, $warning, $preConcert);
 
-  $('.topreaud').on('click', function() {
-    $intro.hide();
-    $preAudition.show();
-  });
-
-  $('.tobegaud').on('click', function() {
-    $preAudition.hide();
-    $beginAudition.show();
-  });
-
-  $('.toaud').on('click', function () {
+  $toAud.on('click', function () {
     $beginAudition.hide();
     $audition.show();
     $bmin.show();
   });
 
-  $('.topostaud').on('click', function() {
+  $toPostAud.on('click', function() {
     $audition.hide();
     $bmin.hide();
     $postAudition.show();
@@ -208,17 +190,7 @@ $(() => {
 
   });
 
-  $('.towarning').on('click', function() {
-    $postAudition.hide();
-    $warning.show();
-  });
-
-  $('.topreconcert').on('click', function() {
-    $warning.hide();
-    $preConcert.show();
-  });
-
-  $('.togame').on('click', function() {
+  $toGame.on('click', function() {
     $('.piece').html(piece);
     $('.outer').hide();
     $setup.hide();
@@ -226,7 +198,7 @@ $(() => {
     $gamePlay.show();
   });
 
-  $('.reset').on('click', function() {
+  $resetBtn.on('click', function() {
     location.reload();
   });
 
@@ -347,9 +319,13 @@ $(() => {
   bMinor.push(midAs.key);
   bMinor.push(highB.key);
 
-  console.log(bMinor);
+  $toPostAud.hide();
 
-  $('.topostaud').hide();
+  function playRandomSqueak() {
+    const randomSqueak = squeaks[Math.floor(Math.random() * squeaks.length)];
+    randomSqueak.play();
+    randomSqueak.volume = 0.5;
+  }
 
   $(document).on('keydown', function(e) {
     const note = bMinor[0];
@@ -359,9 +335,7 @@ $(() => {
     } else {
       $('.scale').addClass('toplay').removeClass('hit');
       bMinor = [midB.key, midCs.key, midD.key, midE.key, midFs.key, midG.key, midAs.key, highB.key];
-      const randomSqueak = squeaks[Math.floor(Math.random() * squeaks.length)];
-      randomSqueak.play();
-      randomSqueak.volume = 0.3;
+      playRandomSqueak();
     }
     if ($('.viii').hasClass('hit')) {
       $('.topostaud').show();
@@ -451,12 +425,9 @@ $(() => {
           $notes.eq(i).addClass('miss');
           playerScore -= 1;
           $score.html(`Score: ${playerScore}`);
-          const randomSqueak = squeaks[Math.floor(Math.random() * squeaks.length)];
-          randomSqueak.play();
-          randomSqueak.currentTime = 0.5;
+          playRandomSqueak();
           missStreak += 1;
           hitStreak = 0;
-          console.log(missStreak, hitStreak);
           toggleBooing();
         }
       }
@@ -492,9 +463,7 @@ $(() => {
           $(el).addClass('miss');
           playerScore -= 1;
           $score.html(`Score: ${playerScore}`);
-          const randomSqueak = squeaks[Math.floor(Math.random() * squeaks.length)];
-          randomSqueak.play();
-          randomSqueak = 0.5;
+          playRandomSqueak();
           missStreak += 1;
           hitStreak = 0;
         }
@@ -555,7 +524,7 @@ $(() => {
     $result.show();
     $finalScore.html(playerScore);
     if (playerScore <= 50) {
-      $message.html('Quel disastre! My reputation is in ruins because of you! You\'re fired!');
+      $message.html('Quel désastre! My reputation is in ruins because of you! You\'re fired!');
     } else if (playerScore >= 51 && playerScore <= 120) {
       $message.html('Sacre bleu! That was a disgrace! You\'re on your last chance before you\'re fired! I have my eye on you…');
     } else if (playerScore >= 121 && playerScore <= 230) {
@@ -587,6 +556,10 @@ $(() => {
       startGame();
     }, 0);
   });
+
+  // function createNote(noteValue, keypress) {
+  //   $main.append($(`<div class="animate ${noteValue} ${keypress}">${keypress}</div>`));
+  // }
 
   function startGame() {
     // First subject
