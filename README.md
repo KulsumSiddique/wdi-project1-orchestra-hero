@@ -1,4 +1,4 @@
-# General Assembly WDI Project 1: Le Héros Orchestral
+![Le Héros Orchestral](le-heros-orchestral.png)
 
 [GitHub Pages](https://platypotomus.github.io/wdi-project1-orchestra-hero/)
 
