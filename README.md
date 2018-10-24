@@ -45,7 +45,7 @@ To create a single-page web game, using HTML, CSS, and JavaScript technologies l
 ## Approach Taken
 
 ### Audio
-*Scène no. 9* from Tchaikovsky's *Swan Lake* is the perfect choice for this game, not only because it is so beautiful and well known, but also because it sticks to the same tempo and metre throughout, and doesn't feature complex rhythms. So it was easy to divide up and code.
+Tchaikovsky's *Swan Lake op. 20 no. 10 Scène* is the perfect choice for this game, not only because it is so beautiful and well known, but also because it sticks to the same tempo and metre throughout, and doesn't feature complex rhythms. So it was easy to divide up and code.
 
 To replicate the oboe notes assigned to the keypresses, the orchestral backing, oboe squeaks, and the crotale notes for the buttons, I used Logic Pro with EastWest Samples. I do not own the tuning up or booing audio.
 
@@ -60,8 +60,9 @@ I worked on the keypresses first, by laying out the fifteen keys in the style of
 Next, I used CSS animation to move the divs along the screen. As an experienced musician, it seemed more intuitive, from a UX point of view, to move the divs from right to left and have them collide in the centre of the screen. This made collision detection much more difficult. When their animation stops, they're removed from the DOM.
 
 ### Featured Piece of Code no. 1
-This gets the dimensions of the relative elements to check for collision. In order to check the right note, I get the first div with a class of animate, that has a class of the key the user just played, and that doesn't have a class of dead or miss. From js/app.js
-```
+This gets the dimensions of the relative elements to check for collision. In order to check the right note, I get the first div with a class of animate, that has a class of the key the user just played, and that doesn't have a class of dead or miss. From [js/app.js](https://github.com/platypotomus/wdi-project1-orchestra-hero/blob/master/js/app.js).
+
+```javascript
 const barLeft = $bar.offset().left;
 const barRight = Number($bar.offset().left) + Number($bar.width());
 
@@ -84,8 +85,9 @@ I initially envisaged a classy gold and brown design for the game, but later swi
 PhotoShop was used for a number of the graphics, including to create Monsieur Enmarche, who is half stock image conductor, Emmanuel Macron.
 
 ### Featured Piece of Code no. 2
-This piece of CSS gives the title text a subtle gradient, as well as a subtle stroke outline which also runs in the middle of the font to create a subtle, wood-like effect. From css/style.css
-```
+This piece of CSS gives the title text a subtle gradient, as well as a subtle stroke outline which also runs in the middle of the font to create a subtle, wood-like effect. From [css/style.css](https://github.com/platypotomus/wdi-project1-orchestra-hero/blob/master/css/style.css).
+
+```css
 h1 {
   font-family: 'Parisienne', cursive;
   background: -webkit-linear-gradient(#E3C372, #E9AB11);
